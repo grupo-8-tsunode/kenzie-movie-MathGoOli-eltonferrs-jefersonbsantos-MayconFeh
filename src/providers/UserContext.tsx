@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import { api } from "../services/api";
-import { IUser, IChildren, ISubmit, IReview, IUserContext, IMovie } from "./@types";
+import { IUser, IChildren, ISubmit, IReview, IUserContext } from "./@types";
 import { TypeResgisterFormValue } from "../pages/Register/registerSchema";
 
 export const UserContext = createContext({} as IUserContext);
@@ -42,6 +42,7 @@ export const UserProvider = ({ children }: IChildren) => {
       const { data } = await api.post("/login", formData);
       localStorage.setItem("@KenzieMovie:Token", data.accessToken);
       localStorage.setItem("@KenzieMovie:UserID", data.user.id);
+      console.log(data)
 
       loadUser();
     } catch (error) {

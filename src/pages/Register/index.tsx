@@ -1,11 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { TypeResgisterFormValue, registerSchema } from "./registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { RegisterStyled } from "./style";
-import Logo from "../../assets/kenziemovie.svg";
 import { Header } from "../../components/Header/Index";
 
 export const Register = () => {
