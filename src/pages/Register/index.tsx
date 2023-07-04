@@ -2,12 +2,16 @@ import { useForm ,SubmitHandler} from "react-hook-form"
 import { Link } from "react-router-dom"
 import { TypeResgisterFormValue, registerSchema } from "./registerSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useContext } from "react"
+import { UserContext } from "../../providers/UserContext"
 
 export const Register = () => {
     const {register,handleSubmit,reset, formState: {errors}} = useForm<TypeResgisterFormValue>({resolver:zodResolver(registerSchema)})
 
+    const { registerNewuser}= useContext(UserContext)
+
     const registerUser:SubmitHandler<TypeResgisterFormValue> =(data)=>{
-        console.log(data)
+        registerNewuser(data)
         reset()
     }
 

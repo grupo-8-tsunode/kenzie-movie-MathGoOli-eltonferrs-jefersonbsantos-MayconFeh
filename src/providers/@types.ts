@@ -1,3 +1,5 @@
+import { TypeResgisterFormValue } from "../pages/Register/registerSchema";
+
 export interface IUser{
     email: string;
     name: string;
@@ -27,6 +29,7 @@ export interface IUserContext{
     userAddReview: (review: IReview) => Promise<void>;
     userEditReview: (review: IReview, movieId: string) => Promise<void>;
     userDeleteReview: (movieId: string) => Promise<void>;
+    registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
   
   }
 
