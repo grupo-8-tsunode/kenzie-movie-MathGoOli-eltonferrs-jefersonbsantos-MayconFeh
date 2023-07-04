@@ -115,4 +115,15 @@ export const HomeStyled = styled.div`
     font-weight: 700;
     size: 21px;
   }
+
+  .star{
+    width: 28px;
+    height: 28px;
+    color: var(--color-yellow);
+  }
+  .fullstar{
+    width: 28px;
+    height: 28px;
+    color: var(--color-yellow);
+  }
 `;

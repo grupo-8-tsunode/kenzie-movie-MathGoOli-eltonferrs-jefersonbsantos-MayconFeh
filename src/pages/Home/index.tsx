@@ -1,22 +1,14 @@
-import Logo from "../../assets/kenziemovie.svg";
 import Film from "../../assets/teste.png";
-import Star from "../../assets/star.svg";
+import { /*AiFillStar*/ AiOutlineStar } from "react-icons/ai";
 import { HomeStyled } from "./style";
 import { H3Styled } from "../../styles/typography";
-import { Link } from "react-router-dom";
+import { Header } from "../../components/Header/Index";
+
 
 export const Home = () => {
   return (
     <HomeStyled>
-      <header className="homeHeader__container">
-        <img className="logo" src={Logo} alt="Logo Kenziemovie" />
-        <div>
-          <button className="signUp__button">Cadastre-se</button>
-          <Link to={"/login"} className="singIn__button">
-            Entrar
-          </Link>
-        </div>
-      </header>
+      <Header/>
       <main className="homeMain__container">
         <section>
           <ul className="cards__container">
@@ -29,7 +21,8 @@ export const Home = () => {
               <div className="movieTitle-avaliation__div">
                 <H3Styled className="movie__title">The Random Heros</H3Styled>
                 <div className="avaliation__div">
-                  <img className="star" src={Star} alt="" />
+                  <AiOutlineStar className="star"/>
+                  
                   <span className="avaliation">5.0</span>
                 </div>
               </div>
