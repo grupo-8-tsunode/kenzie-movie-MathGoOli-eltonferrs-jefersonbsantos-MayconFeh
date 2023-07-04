@@ -1,12 +1,13 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { TypeResgisterFormValue, registerSchema } from "./registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { RegisterStyled } from "./style";
-import Logo from "../../assets/kenziemovie.svg";
+import Arrow from "../../assets/arrow.svg";
 import { Header } from "../../components/Header/Index";
+import { Input } from "../../components/Inputs/Index";
+import { H1Styled } from "../../styles/typography";
 
 export const Register = () => {
   const {
@@ -28,44 +29,37 @@ export const Register = () => {
   return (
     <RegisterStyled>
       <Header />
-      {/* <nav className="nav__container">
-        <img src={Logo} alt="" />
+      <div className="title-goBackButton__container">
         <div>
-          <Link to={"/register"} className="signUp__button">
-            Cadastre-se
-          </Link>
-          <Link to={"/login"} className="signIn__button">
-            Entrar
-          </Link>
+          <H1Styled className="title">Cadastro</H1Styled>
+          <p className="paragraph">Preencha os campos para cadastrar-se</p>
         </div>
-      </nav> */}
-      <div>
-        <div>
-          <h2>Cadastro</h2>
-          <p>Preencha os campos para cadastrar-se</p>
-        </div>
-        <button>Voltar</button>
+        <button className="goBack__button">
+          <img src={Arrow} alt="Seta apontando para esquerda" /> Voltar
+        </button>
       </div>
       <form onSubmit={handleSubmit(registerUser)}>
-        <div>
-          <input type="text" {...register("name")} placeholder="Seu nome" />
+        <div className="form__container">
+          <Input type={"text"} placeholder="Seu nome" {...register("name")} />
           {errors.name ? <p>{errors.name.message}</p> : null}
-          <input type="email" {...register("email")} placeholder="Seu email" />
+          <Input type="email" {...register("email")} placeholder="Seu email" />
           {errors.email ? <p>{errors.email.message}</p> : null}
-          <input
+          <Input
             type="password"
             {...register("password")}
             placeholder="Sua senha"
           />
           {errors.password ? <p>{errors.password.message}</p> : null}
-          <input
+          <Input
             type="password"
             {...register("confirm")}
             placeholder="Confirme senha"
           />
           {errors.confirm ? <p>{errors.confirm.message}</p> : null}
         </div>
-        <button type="submit">Cadastre-se</button>
+        <button type="submit" className="form__button">
+          Cadastre-se
+        </button>
       </form>
     </RegisterStyled>
   );
