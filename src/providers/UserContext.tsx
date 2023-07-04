@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 
 import { api } from "../services/api";
-import { IUser, IChildren, ISubmit, IReview } from "./@types";
+import { IUser, IChildren, ISubmit, IReview, IUserContext } from "./@types";
 
-export const UserContext = createContext({});
+export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUser | null>(null);
@@ -57,49 +57,57 @@ export const UserProvider = ({ children }: IChildren) => {
     const token = localStorage.getItem("@KenzieMovie:Token");
 
     try {
-        await api.post("/reviews", review, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-
+      await api.post("/reviews", review, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-    }
+  };
 
-    const userEditReview = async (review: IReview, movieId: string) => {
-        const token = localStorage.getItem("@KenzieMovie:Token");
-    
-        try {
-            await api.put(`/reviews/${movieId}`, review, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-    
-        } catch (error) {
-            console.error(error)
-        }
-    }
+  const userEditReview = async (review: IReview, movieId: string) => {
+    const token = localStorage.getItem("@KenzieMovie:Token");
 
-    const userDeleteReview = async (movieId: string) => {
-        const token = localStorage.getItem("@KenzieMovie:Token");
-    
-        try {
-            await api.delete(`/reviews/${movieId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-    
-        } catch (error) {
-            console.error(error)
-        }
+    try {
+      await api.put(`/reviews/${movieId}`, review, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
     }
+  };
+
+  const userDeleteReview = async (movieId: string) => {
+    const token = localStorage.getItem("@KenzieMovie:Token");
+
+    try {
+      await api.delete(`/reviews/${movieId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <UserContext.Provider value={{ isLoading, user, loadUser, userLoginSubmit, userLogoff, userAddReview, userEditReview, userDeleteReview }}>
+    <UserContext.Provider
+      value={{
+        isLoading,
+        user,
+        loadUser,
+        userLoginSubmit,
+        userLogoff,
+        userAddReview,
+        userEditReview,
+        userDeleteReview,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
