@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { RegisterStyled } from "./style";
 import Logo from "../../assets/kenziemovie.svg";
+import { Header } from "../../components/Header/Index";
 
 export const Register = () => {
   const {
@@ -26,19 +27,18 @@ export const Register = () => {
 
   return (
     <RegisterStyled>
-      <header>
-        <nav className="nav__container">
-          <img src={Logo} alt="" />
-          <div>
-            <Link to={"/register"} className="signUp__button">
-              Cadastre-se
-            </Link>
-            <Link to={"/login"} className="signIn__button">
-              Entrar
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
+      {/* <nav className="nav__container">
+        <img src={Logo} alt="" />
+        <div>
+          <Link to={"/register"} className="signUp__button">
+            Cadastre-se
+          </Link>
+          <Link to={"/login"} className="signIn__button">
+            Entrar
+          </Link>
+        </div>
+      </nav> */}
       <div>
         <div>
           <h2>Cadastro</h2>
