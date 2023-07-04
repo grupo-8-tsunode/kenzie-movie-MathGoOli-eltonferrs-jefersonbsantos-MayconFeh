@@ -33,18 +33,28 @@ export interface IUserContext{
   
   }
 
+
 export interface IReview{
-    movieId: string;
-    userId: string;
+    id: number;
+    movieId: number;
+    userId: number;
     score: number;
     description: string;
 }
 
 export interface IMovie{
-    id: string;
+    id: number;
     name: string;
     type: string;
     duration: number;
     synopsis: string;
     image: string;
+    reviews: IReview[];
+}
+
+export interface IMovieContext{
+    movies: IMovie[];
+    getMovies: () => Promise<void>;
+    getMovie: (id: number) => Promise<IMovie> | Promise<unknown>;
+    getReview: (idMovie: number, idUser: number) => Promise<IReview> | Promise<unknown>;
 }
