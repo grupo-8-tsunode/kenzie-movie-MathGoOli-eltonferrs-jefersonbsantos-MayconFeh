@@ -9,4 +9,10 @@ export const GlobalStyle = createGlobalStyle`
     --color-lightgray-2: #171717;
 
 }
+
+body{
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
 `
