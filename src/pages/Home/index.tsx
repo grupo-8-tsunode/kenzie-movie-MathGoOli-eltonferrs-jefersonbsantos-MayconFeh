@@ -1,6 +1,6 @@
-import Logo from "../../assets/kenziemovie.png";
+import Logo from "../../assets/kenziemovie.svg";
 import Film from "../../assets/teste.png";
-import Star from "../../assets/star.png";
+import Star from "../../assets/star.svg";
 import { HomeStyled } from "./style";
 import { H3Styled } from "../../styles/typography";
 
@@ -23,11 +23,11 @@ export const Home = () => {
                 <span className="movie__genre">Ficção</span>
                 <span className="movie__duration">90m</span>
               </div>
-              <div>
-                <H3Styled>The Random Heros</H3Styled>
-                <div>
-                  <img src={Star} alt="" />
-                  <span>5.0</span>
+              <div className="movieTitle-avaliation__div">
+                <H3Styled className="movie__title">The Random Heros</H3Styled>
+                <div className="avaliation__div">
+                  <img className="star" src={Star} alt="" />
+                  <span className="avaliation">5.0</span>
                 </div>
               </div>
             </li>

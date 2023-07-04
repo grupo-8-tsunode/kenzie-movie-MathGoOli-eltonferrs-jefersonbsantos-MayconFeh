@@ -34,10 +34,10 @@ export const HomeStyled = styled.div`
     margin-top: 20px;
   }
 
-  .cards__conatiner {
+  .cards__container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
   }
 
   .card__movie {
@@ -78,5 +78,34 @@ export const HomeStyled = styled.div`
     font-weight: 400;
     line-height: normal;
     color: rgba(255, 255, 255, 0.5);
+  }
+
+  .movieTitle-avaliation__div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .movie__title {
+    font-size: 1.3rem;
+    line-height: 20px;
+  }
+
+  .avaliation__div {
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .star {
+    width: 30px;
+    height: 30px;
+  }
+
+  .avaliation {
+    font-family: "Poppins";
+    font-weight: 700;
+    size: 21px;
   }
 `;
