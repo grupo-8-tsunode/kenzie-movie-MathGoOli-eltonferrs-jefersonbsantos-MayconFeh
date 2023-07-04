@@ -2,6 +2,7 @@ import Logo from "../../assets/kenziemovie.png";
 import Film from "../../assets/teste.png";
 import Star from "../../assets/star.png";
 import { HomeStyled } from "./style";
+import { H3Styled } from "../../styles/typography";
 
 export const Home = () => {
   return (
@@ -23,7 +24,7 @@ export const Home = () => {
                 <span className="movie__duration">90m</span>
               </div>
               <div>
-                <h2>The Random Heros</h2>
+                <H3Styled>The Random Heros</H3Styled>
                 <div>
                   <img src={Star} alt="" />
                   <span>5.0</span>
