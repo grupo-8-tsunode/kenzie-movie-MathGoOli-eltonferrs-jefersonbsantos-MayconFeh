@@ -1,11 +1,11 @@
-import { H1Styled, PStyled } from "../../styles/typography";
+import { Header } from "../../components/Header/Index";
+
 
 export const Login = () => {
  
  return(
     <>
-        <H1Styled>Login</H1Styled>
-        <PStyled>xablau</PStyled>
+       <Header/>
     </>
   ) 
 };
