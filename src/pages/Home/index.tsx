@@ -3,6 +3,7 @@ import Film from "../../assets/teste.png";
 import Star from "../../assets/star.svg";
 import { HomeStyled } from "./style";
 import { H3Styled } from "../../styles/typography";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
@@ -11,7 +12,9 @@ export const Home = () => {
         <img className="logo" src={Logo} alt="Logo Kenziemovie" />
         <div>
           <button className="signUp__button">Cadastre-se</button>
-          <button className="singIn__button">Entrar</button>
+          <Link to={"/login"} className="singIn__button">
+            Entrar
+          </Link>
         </div>
       </header>
       <main className="homeMain__container">

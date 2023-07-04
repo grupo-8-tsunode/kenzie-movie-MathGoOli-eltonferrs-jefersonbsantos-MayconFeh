@@ -30,6 +30,13 @@ export const HomeStyled = styled.div`
     font-size: 17px;
   }
 
+  a {
+    font-family: "Poppins";
+    color: var(--color-black);
+    text-decoration: none;
+    padding-inline: 15px;
+  }
+
   .homeMain__container {
     margin-top: 20px;
   }
