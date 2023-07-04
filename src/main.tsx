@@ -4,12 +4,18 @@ import { App } from './App'
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
+import { UserProvider } from './providers/UserContext';
+import { MovieProvider } from './providers/MovieContext';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <MovieProvider>
+          <App />
+        </MovieProvider>
+      </UserProvider>
     </BrowserRouter>
     <ToastContainer/>
 
