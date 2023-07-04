@@ -1,23 +1,49 @@
-
-
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
-import { IMovie } from "./@types";
+import { IChildren, IMovie, IMovieContext, IReview } from "./@types";
 
-export const MovieContext = createContext({});
+export const MovieContext = createContext({} as IMovieContext);
 
-export const MovieProvider = ({children}) => {
-    const [movies , setMovies] = useState< IMovie[] | null >(null);
+export const MovieProvider = ({ children }: IChildren) => {
+    const [movies , setMovies] = useState< IMovie[] >([]);
 
     const getMovies = async () => {
-        const { data } = api.get("/movies")
+        try {
+            const { data } = await api.get<IMovie[]>("/movies?_embed=reviews");
 
-        setMovies(data)
+            setMovies(data);
+        } catch (error) {
+            console.error(error);
+        }
+        
+    }
+
+    useEffect( () => {
+        getMovies();
+    }, [])
+
+    const getMovie = async (id: number) => {
+        try {
+            const { data } = await api.get<IMovie>(`/${id}movies?_embed=reviews`);
+            return data
+        } catch (error) {
+            return error
+        }
+
+    }
+
+    const getReview = async (idMovie: number, idUser: number) => {
+        try {
+            const { data } = await api.get<IReview>(`/movies/${idMovie}/reviews?userId=${idUser}`);
+            return data
+        } catch (error) {
+            return error
+        }
 
     }
 
     return (
-        <MovieContext.Provider>
+        <MovieContext.Provider value={{movies, getMovies, getMovie, getReview}}>
             {children}
         </MovieContext.Provider>
     )

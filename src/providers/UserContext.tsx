@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import { api } from "../services/api";
-import { IUser, IChildren, ISubmit, IReview, IUserContext } from "./@types";
+import { IUser, IChildren, ISubmit, IReview, IUserContext, IMovie } from "./@types";
 import { TypeResgisterFormValue } from "../pages/Register/registerSchema";
 
 export const UserContext = createContext({} as IUserContext);
@@ -16,7 +16,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
     if (token) {
       try {
-        const { data } = await api.get("/users/" + userId, {
+        const { data } = await api.get<IUser>("/users/" + userId, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
