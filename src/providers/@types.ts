@@ -18,9 +18,30 @@ export interface ISubmit{
     password: string;
 }
 
+export interface IUserContext{
+    isLoading: boolean;
+    user: IUser | null;
+    loadUser: () => Promise<void>;
+    userLoginSubmit: (formData: ISubmit) => Promise<void>;
+    userLogoff: () => void;
+    userAddReview: (review: IReview) => Promise<void>;
+    userEditReview: (review: IReview, movieId: string) => Promise<void>;
+    userDeleteReview: (movieId: string) => Promise<void>;
+  
+  }
+
 export interface IReview{
     movieId: string;
     userId: string;
     score: number;
     description: string;
+}
+
+export interface IMovie{
+    id: string;
+    name: string;
+    type: string;
+    duration: number;
+    synopsis: string;
+    image: string;
 }
