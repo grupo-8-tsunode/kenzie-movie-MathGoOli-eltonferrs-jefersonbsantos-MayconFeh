@@ -7,6 +7,7 @@ import { RegisterStyled } from "./style";
 import { Header } from "../../components/Header/Index";
 import { Input } from "../../components/Inputs/Index";
 import { H1Styled } from "../../styles/typography";
+import Arrow from "../../assets/arrow.svg";
 
 export const Register = () => {
   const {
@@ -39,22 +40,33 @@ export const Register = () => {
       </div>
       <form onSubmit={handleSubmit(registerUser)}>
         <div className="form__container">
-          <Input type={"text"} placeholder="Seu nome" {...register("name")} />
-          {errors.name ? <p>{errors.name.message}</p> : null}
-          <Input type="email" {...register("email")} placeholder="Seu email" />
-          {errors.email ? <p>{errors.email.message}</p> : null}
           <Input
-            type="password"
+            type={"text"}
+            placeholder={"Seu nome"}
+            {...register("name")}
+            errors={errors.name}
+          />
+
+          <Input
+            type={"email"}
+            placeholder={"Seu email"}
+            {...register("email")}
+            errors={errors.email}
+          />
+
+          <Input
+            type={"password"}
+            placeholder={"Sua senha"}
             {...register("password")}
-            placeholder="Sua senha"
+            errors={errors.password}
           />
-          {errors.password ? <p>{errors.password.message}</p> : null}
+
           <Input
-            type="password"
+            type={"password"}
+            placeholder={"Confirme senha"}
             {...register("confirm")}
-            placeholder="Confirme senha"
+            errors={errors.confirm}
           />
-          {errors.confirm ? <p>{errors.confirm.message}</p> : null}
         </div>
         <button type="submit" className="form__button">
           Cadastre-se
