@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import { RegisterStyled } from "./style";
-import Arrow from "../../assets/arrow.svg";
 import { Header } from "../../components/Header/Index";
 import { Input } from "../../components/Inputs/Index";
 import { H1Styled } from "../../styles/typography";
