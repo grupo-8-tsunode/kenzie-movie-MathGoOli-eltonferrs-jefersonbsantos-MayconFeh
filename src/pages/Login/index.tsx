@@ -8,6 +8,8 @@ import { TypeLoginFormValue, loginSchema } from "./loginSchema";
 import { LoginStyled } from "./styles";
 import { H1Styled } from "../../styles/typography";
 import { Input } from "../../components/Inputs/Index";
+import { Footer } from "../../components/Footer/Index";
+
 
 export const Login = () => {
   const { userLoginSubmit } = useContext(UserContext);
@@ -51,4 +53,7 @@ export const Login = () => {
       {/*footer */}
     </LoginStyled>
   );
+        <Footer/>
+    </>
+
 };

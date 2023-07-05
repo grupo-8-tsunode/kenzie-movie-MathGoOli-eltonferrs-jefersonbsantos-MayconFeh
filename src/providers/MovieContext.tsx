@@ -24,7 +24,7 @@ export const MovieProvider = ({ children }: IChildren) => {
 
     const getMovie = async (id: number) => {
         try {
-            const { data } = await api.get<IMovie>(`/${id}movies?_embed=reviews`);
+            const { data } = await api.get<IMovie>(`/movies/${id}/?_embed=reviews`);
             return data
         } catch (error) {
             return error
