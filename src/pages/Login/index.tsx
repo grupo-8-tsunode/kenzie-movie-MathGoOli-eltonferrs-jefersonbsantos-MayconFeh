@@ -10,7 +10,6 @@ import { H1Styled } from "../../styles/typography";
 import { Input } from "../../components/Inputs/Index";
 import { Footer } from "../../components/Footer/Index";
 
-
 export const Login = () => {
   const { userLoginSubmit } = useContext(UserContext);
 
@@ -50,10 +49,7 @@ export const Login = () => {
           </Link>
         </div>
       </div>
-      {/*footer */}
+      <Footer />
     </LoginStyled>
   );
-        <Footer/>
-    </>
-
 };
