@@ -5,6 +5,7 @@ import { UserContext } from "../../providers/UserContext";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TypeLoginFormValue, loginSchema } from "./loginSchema";
+import { Footer } from "../../components/Footer/Index";
 
 export const Login = () => {
  
@@ -33,7 +34,7 @@ export const Login = () => {
           <p>ou</p>
           <Link to={"/register"}>Cadastre-se</Link>
         </div>
-        {/*footer */}
+        <Footer/>
     </>
   ) 
 };
