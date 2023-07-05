@@ -8,6 +8,7 @@ import { Header } from "../../components/Header/Index";
 import { Input } from "../../components/Inputs/Index";
 import { H1Styled } from "../../styles/typography";
 import Arrow from "../../assets/arrow.svg";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   const {
@@ -34,9 +35,9 @@ export const Register = () => {
           <H1Styled className="title">Cadastro</H1Styled>
           <p className="paragraph">Preencha os campos para cadastrar-se</p>
         </div>
-        <button className="goBack__button">
+        <Link to={"/login"} className="goBack__button">
           <img src={Arrow} alt="Seta apontando para esquerda" /> Voltar
-        </button>
+        </Link>
       </div>
       <form onSubmit={handleSubmit(registerUser)}>
         <div className="form__container">
