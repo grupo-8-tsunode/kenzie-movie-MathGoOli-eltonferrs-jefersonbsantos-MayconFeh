@@ -13,13 +13,14 @@ export const GlobalStyle = createGlobalStyle`
 	    --toastify-text-color-light: var(--color-white);
     }
 
-    html {
+   #root{
+    height: 100vh;
         width: 100vw;
-        min-height: 100vh;
-        height: max-content;
+       
       }
 
     body {
+      
         -webkit-font-smoothing: antialiased;
     
         overflow-x: hidden;
