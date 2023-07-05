@@ -3,6 +3,7 @@ import { /*AiFillStar*/ AiOutlineStar } from "react-icons/ai";
 import { HomeStyled } from "./style";
 import { H3Styled } from "../../styles/typography";
 import { Header } from "../../components/Header/Index";
+import { Footer } from "../../components/Footer/Index";
 
 
 export const Home = () => {
@@ -30,6 +31,7 @@ export const Home = () => {
           </ul>
         </section>
       </main>
+      <Footer/>
     </HomeStyled>
   );
 };
