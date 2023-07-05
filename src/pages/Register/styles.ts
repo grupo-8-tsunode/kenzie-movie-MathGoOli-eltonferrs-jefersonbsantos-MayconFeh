@@ -38,10 +38,6 @@ export const RegisterStyled = styled.div`
 
   .form__button {
     width: 100%;
-    height: 38px;
-    border-radius: 20px;
-    background-color: var(--color-yellow);
-    font-weight: 700;
-    font-size: 17px;
+    
   }
 `;

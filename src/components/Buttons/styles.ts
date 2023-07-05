@@ -11,6 +11,9 @@ export const Button = styled.button<IButtonProps>`
     align-items: center;
     justify-content: center;
     background:var(--color-yellow);
+    font-weight: 700;
+    font-size: 1rem;
+    
 
     ${({buttonSize})=>{
         switch(buttonSize){
