@@ -40,7 +40,7 @@ export const Login = () => {
               {...register("password")}
             />
             {errors.password ? <p>{errors.password.message}</p> : null}
-            <Button buttonSize="large" className="login__button" type="submit">
+            <Button buttonsize="large" className="login__button" type="submit">
               Entrar
             </Button>
           </form>

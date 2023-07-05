@@ -1,9 +1,5 @@
 import { HomeStyled } from "./style";
 import { Header } from "../../components/Header/Index";
-import { useContext } from "react";
-import { MovieContext } from "../../providers/MovieContext";
-import { CardMovie } from "../../components/CardMovie";
-
 export const Home = () => {
   const { movies } = useContext(MovieContext);
   console.log(movies)
@@ -17,6 +13,7 @@ export const Home = () => {
           </ul>
         </section>
       </main>
+      <Footer/>
     </HomeStyled>
   );
 };
