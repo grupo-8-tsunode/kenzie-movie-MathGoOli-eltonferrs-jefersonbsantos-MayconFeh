@@ -3,12 +3,15 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IUser, IChildren, ISubmit, IReview, IUserContext } from "./@types";
 import { TypeResgisterFormValue } from "../pages/Register/registerSchema";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const navigate= useNavigate()
 
   const loadUser = async () => {
     const token = localStorage.getItem("@KenzieMovie:Token");
@@ -25,6 +28,9 @@ export const UserProvider = ({ children }: IChildren) => {
         setUser(data);
       } catch (error) {
         console.error(error);
+        localStorage.removeItem("@KenzieMovie:Token");
+        localStorage.removeItem("@KenzieMovie:UserID");
+
       }
     }
   };
@@ -42,11 +48,12 @@ export const UserProvider = ({ children }: IChildren) => {
       const { data } = await api.post("/login", formData);
       localStorage.setItem("@KenzieMovie:Token", data.accessToken);
       localStorage.setItem("@KenzieMovie:UserID", data.user.id);
-      console.log(data)
+      toast.success("logado com Sucesso!")
 
       loadUser();
     } catch (error) {
       console.error(error);
+      toast.error("Email ou senha incorreta!")
     }
   };
 
@@ -64,8 +71,10 @@ export const UserProvider = ({ children }: IChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("Review adcionado")
     } catch (error) {
       console.error(error);
+      toast.error("Reviw não adcionado")
     }
   };
 
@@ -78,8 +87,10 @@ export const UserProvider = ({ children }: IChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("Review atualizada!")
     } catch (error) {
       console.error(error);
+      toast.error("Review não atualizada")
     }
   };
 
@@ -92,17 +103,20 @@ export const UserProvider = ({ children }: IChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("Review deletada")
     } catch (error) {
       console.error(error);
+      toast.error("error ao deletar")
     }
   };
 
   const registerNewuser= async (data:TypeResgisterFormValue)=>{
     try {
       await api.post("/users", data)
-      console.log(data)
+      toast.success("Usuario cadastrado")
+      navigate("/login")
     } catch (error) {
-      console.log(error)
+      toast.error("Usuario não cadastrado")
     }
   }
   return (
