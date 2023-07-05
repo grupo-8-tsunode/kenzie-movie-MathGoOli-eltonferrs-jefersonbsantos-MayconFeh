@@ -23,7 +23,6 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--color-lightgray-2);
         color: var(--color-white);
 
-        width: 90%;
         margin: 0 auto;
     }
 
