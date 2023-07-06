@@ -2,12 +2,15 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IChildren, IMovie, IMovieContext, IReview } from "./@types";
 
+
 import { AxiosError } from "axios";
+
 
 export const MovieContext = createContext({} as IMovieContext);
 
 export const MovieProvider = ({ children }: IChildren) => {
   const [movies, setMovies] = useState<IMovie[]>([]);
+  
 
   const getMovies = async () => {
     try {

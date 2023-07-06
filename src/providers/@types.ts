@@ -20,17 +20,22 @@ export interface ISubmit {
   password: string;
 }
 
-export interface IUserContext {
-  isLoading: boolean;
-  user: IUser | null;
-  loadUser: () => Promise<void>;
-  userLoginSubmit: (formData: ISubmit) => Promise<void>;
-  userLogoff: () => void;
-  userAddReview: (review: IReview) => Promise<void>;
-  userEditReview: (review: IReview, movieId: string) => Promise<void>;
-  userDeleteReview: (movieId: string) => Promise<void>;
-  registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
-}
+
+export interface IUserContext{
+    isLoading: boolean;
+    user: IUser | null;
+    loadUser: () => Promise<void>;
+    userLoginSubmit: (formData: ISubmit) => Promise<void>;
+    userLogoff: () => void;
+    userAddReview: (review: IReview) => Promise<void>;
+    userEditReview: (review: IReview, movieId: string) => Promise<void>;
+    userDeleteReview: (movieId: string) => Promise<void>;
+    registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
+    isCreateModal: boolean;
+    setIsCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
+
+  }
+
 
 export interface IReview {
   length: any;
