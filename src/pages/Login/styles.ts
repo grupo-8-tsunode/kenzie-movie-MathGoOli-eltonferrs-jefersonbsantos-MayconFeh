@@ -1,9 +1,20 @@
 import { styled } from "styled-components";
-import Background from "../../assets/login-background.png";
 
-export const LoginStyled = styled.div`
-  background-image: url("../../assets/login-background.png");
+export const LoginStyled = styled.main`
+  background-image: url(/src/assets/login-background.png);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+
+  header {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .backgroundForm {
+    background: var(--color-lightgray-2);
+  }
 
   form {
     display: flex;
@@ -14,12 +25,6 @@ export const LoginStyled = styled.div`
 
   .login__button {
     width: 100%;
-    height: 38px;
-    background-color: var(--color-yellow);
-    border: 1px solid var(--color-yellow);
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 1rem;
     margin-bottom: 20px;
   }
 

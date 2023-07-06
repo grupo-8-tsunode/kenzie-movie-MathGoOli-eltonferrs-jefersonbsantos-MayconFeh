@@ -3,11 +3,14 @@ import { TypeResgisterFormValue, registerSchema } from "./registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
-import { RegisterStyled } from "./style";
+import { RegisterStyled } from "./styles";
 import { Header } from "../../components/Header/Index";
 import { Input } from "../../components/Inputs/Index";
-import { H1Styled } from "../../styles/typography";
-import Arrow from "../../assets/arrow.svg";
+import { H1Styled, PStyled } from "../../styles/typography";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/Buttons/styles";
+import { Footer } from "../../components/Footer/Index";
 
 export const Register = () => {
   const {
@@ -29,49 +32,54 @@ export const Register = () => {
   return (
     <RegisterStyled>
       <Header />
-      <div className="title-goBackButton__container">
-        <div>
-          <H1Styled className="title">Cadastro</H1Styled>
-          <p className="paragraph">Preencha os campos para cadastrar-se</p>
+      <main>
+        <div className="test">
+          <div className="title-goBackButton__container">
+            <div className="title-register">
+              <H1Styled>Cadastro</H1Styled>
+              <PStyled>Preencha os campos para cadastrar-se</PStyled>
+            </div>
+            <Link to={"/login"} className="goBack__button">
+              <AiOutlineArrowLeft /> Voltar
+            </Link>
+          </div>
+          <form onSubmit={handleSubmit(registerUser)}>
+            <div className="form__container">
+              <Input
+                type={"text"}
+                placeholder={"Seu nome"}
+                {...register("name")}
+                errors={errors.name}
+              />
+
+              <Input
+                type={"email"}
+                placeholder={"Seu email"}
+                {...register("email")}
+                errors={errors.email}
+              />
+
+              <Input
+                type={"password"}
+                placeholder={"Sua senha"}
+                {...register("password")}
+                errors={errors.password}
+              />
+
+              <Input
+                type={"password"}
+                placeholder={"Confirme senha"}
+                {...register("confirm")}
+                errors={errors.confirm}
+              />
+            </div>
+            <Button buttonsize="large" type="submit" className="form__button">
+              Cadastre-se
+            </Button>
+          </form>
         </div>
-        <button className="goBack__button">
-          <img src={Arrow} alt="Seta apontando para esquerda" /> Voltar
-        </button>
-      </div>
-      <form onSubmit={handleSubmit(registerUser)}>
-        <div className="form__container">
-          <Input
-            type={"text"}
-            placeholder={"Seu nome"}
-            {...register("name")}
-            errors={errors.name}
-          />
-
-          <Input
-            type={"email"}
-            placeholder={"Seu email"}
-            {...register("email")}
-            errors={errors.email}
-          />
-
-          <Input
-            type={"password"}
-            placeholder={"Sua senha"}
-            {...register("password")}
-            errors={errors.password}
-          />
-
-          <Input
-            type={"password"}
-            placeholder={"Confirme senha"}
-            {...register("confirm")}
-            errors={errors.confirm}
-          />
-        </div>
-        <button type="submit" className="form__button">
-          Cadastre-se
-        </button>
-      </form>
+      </main>
+      <Footer />
     </RegisterStyled>
   );
 };

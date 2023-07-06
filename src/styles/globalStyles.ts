@@ -13,13 +13,16 @@ export const GlobalStyle = createGlobalStyle`
 	    --toastify-text-color-light: var(--color-white);
     }
 
-    html {
+   #root{
+        max-width: 100vw;
         width: 100vw;
+        height:100vh;
         min-height: 100vh;
-        height: max-content;
+       
       }
 
     body {
+      
         -webkit-font-smoothing: antialiased;
     
         overflow-x: hidden;
@@ -27,6 +30,11 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--color-lightgray-2);
         color: var(--color-white);
 
+        margin: 0 auto;
+    }
+
+    main {
+        width: 90%;
         margin: 0 auto;
     }
 

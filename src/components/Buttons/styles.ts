@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface IButtonProps{
-    buttonSize: "large" | "medium" | "small"
+    buttonsize: "large" | "medium" | "small"
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -11,9 +11,12 @@ export const Button = styled.button<IButtonProps>`
     align-items: center;
     justify-content: center;
     background:var(--color-yellow);
+    font-weight: 700;
+    font-size: 1rem;
 
-    ${({buttonSize})=>{
-        switch(buttonSize){
+
+    ${({buttonsize})=>{
+        switch(buttonsize){
             case "small":
                 return css`
                     padding-inline: 15px;
