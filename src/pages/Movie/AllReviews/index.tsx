@@ -22,13 +22,17 @@ export const AllReviews = ({movie}: ISection) => {
     return (
         <section>
             <ul>
+                <p></p>
                 {reviews?.map( review => {
                     return (
+
+
                         <li key={review.id}>
                             <img src="" alt="" />
                             <span>{review.score}</span>
                             <p>{review.description}</p>
                             <h2>{review.id}</h2>
+
                         </li>
                     )}
                 )}
