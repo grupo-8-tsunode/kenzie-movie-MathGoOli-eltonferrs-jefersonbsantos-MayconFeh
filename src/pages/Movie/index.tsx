@@ -25,8 +25,7 @@ export const Movie = () => {
     return (
         <>
             <Header/>
-            <MainImageSection movie={movie} />
-            
+            <MainImageSection movie={movie} />  
         </>
     )
 }

@@ -10,12 +10,15 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
   if (typeof movie === "object" && movie !== null) {
     return (
       <StyledSection image={movie ? movie.image : null}>
-        <div>
+        <div className="outdiv">
+
+        
+        <div className="innerdiv">
           <span>{movie?.type}</span>
           <h2>{movie?.name}</h2>
         </div>
-        <div>
-          <span>{movie?.duration}</span>
+        <div className="innerdiv">
+          <span>{movie?.duration + "m"}</span>
           {movie?.reviews.length !== 0 ? (
             <span className="avaliation">
               {(
@@ -28,6 +31,7 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
           ) : (
             "-"
           )}
+        </div>
         </div>
       </StyledSection>
     );
