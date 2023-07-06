@@ -9,9 +9,9 @@ interface ISection {
 
 export const UserReviewSection = ({movie}: ISection) => {
     const { user } = useContext(UserContext);
-    const [UserReview, setUserReview] = useState< IReview[] | null >(null)
+    const [UserReview, setUserReview] = useState< IReview[] | undefined >(undefined)
 
-    // console.log(UserReview);
+    
     useEffect(()=>{
         if((typeof user === "object" && user !== null) && (typeof movie === "object" && movie !== null) ){
             setUserReview( movie.reviews.filter(review => review.userId == user.id));
@@ -19,13 +19,13 @@ export const UserReviewSection = ({movie}: ISection) => {
         }
 
 
-    },[movie])
+    },[movie, user])
 
 
     return (
         <section>
             <h3>Sua Avaliação</h3>
-            {UserReview ? <p>{UserReview[0].description}</p>: <h2>Deixe sua avaliação aqui</h2>}
+            { typeof UserReview !== "undefined" && UserReview?.length > 0 ? <p>{UserReview[0].description}</p>: <h2>Deixe sua avaliação aqui</h2>}
 
             <button>E</button>
             <button>D</button>
