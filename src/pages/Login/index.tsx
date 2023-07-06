@@ -28,7 +28,7 @@ export const Login = () => {
   return (
     <LoginStyled>
       <Header />
-      
+      <main>
         <div className="backgroundForm">
           <form onSubmit={handleSubmit(submit)}>
             <H1Styled>Login</H1Styled>
@@ -51,7 +51,8 @@ export const Login = () => {
             </Link>
           </div>
         </div>
-      
+      </main>
+
       <Footer />
     </LoginStyled>
   );

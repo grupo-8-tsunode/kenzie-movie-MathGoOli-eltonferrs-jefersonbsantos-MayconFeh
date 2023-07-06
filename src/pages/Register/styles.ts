@@ -1,17 +1,22 @@
 import { styled } from "styled-components";
 
 export const RegisterStyled = styled.div`
-height: 65%;
->.test{
-  height: 100%;
-  width: 100%;
-  @media (min-width: 768px){
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 65%;
+  > .test {
+    height: 100%;
+    width: 100%;
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
-}
+  header {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   .title-goBackButton__container {
     display: flex;
     flex-direction: column;
@@ -22,9 +27,8 @@ height: 65%;
       align-items: flex-start;
       text-align: start;
       flex-direction: row;
-      justify-content:space-between
+      justify-content: space-between;
     }
-    
   }
 
   .title {
@@ -46,10 +50,9 @@ height: 65%;
     font-weight: 700;
     color: var(--color-yellow);
   }
-form{
-  height: 250px;
-  
-}
+  form {
+    height: 250px;
+  }
   .form__container {
     display: flex;
     flex-direction: column;
@@ -59,11 +62,9 @@ form{
       height: 150px;
       flex-wrap: wrap;
     }
-    
   }
 
   .form__button {
     width: 100%;
-    
   }
 `;

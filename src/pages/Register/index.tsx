@@ -32,52 +32,54 @@ export const Register = () => {
   return (
     <RegisterStyled>
       <Header />
-      <div className="test">
-        <div className="title-goBackButton__container">
-          <div className="title-register">
-            <H1Styled>Cadastro</H1Styled>
-            <PStyled>Preencha os campos para cadastrar-se</PStyled>
+      <main>
+        <div className="test">
+          <div className="title-goBackButton__container">
+            <div className="title-register">
+              <H1Styled>Cadastro</H1Styled>
+              <PStyled>Preencha os campos para cadastrar-se</PStyled>
+            </div>
+            <Link to={"/login"} className="goBack__button">
+              <AiOutlineArrowLeft /> Voltar
+            </Link>
           </div>
-          <Link to={"/login"} className="goBack__button">
-          <AiOutlineArrowLeft/> Voltar
-          </Link>
+          <form onSubmit={handleSubmit(registerUser)}>
+            <div className="form__container">
+              <Input
+                type={"text"}
+                placeholder={"Seu nome"}
+                {...register("name")}
+                errors={errors.name}
+              />
+
+              <Input
+                type={"email"}
+                placeholder={"Seu email"}
+                {...register("email")}
+                errors={errors.email}
+              />
+
+              <Input
+                type={"password"}
+                placeholder={"Sua senha"}
+                {...register("password")}
+                errors={errors.password}
+              />
+
+              <Input
+                type={"password"}
+                placeholder={"Confirme senha"}
+                {...register("confirm")}
+                errors={errors.confirm}
+              />
+            </div>
+            <Button buttonsize="large" type="submit" className="form__button">
+              Cadastre-se
+            </Button>
+          </form>
         </div>
-        <form onSubmit={handleSubmit(registerUser)}>
-          <div className="form__container">
-            <Input
-              type={"text"}
-              placeholder={"Seu nome"}
-              {...register("name")}
-              errors={errors.name}
-            />
-
-            <Input
-              type={"email"}
-              placeholder={"Seu email"}
-              {...register("email")}
-              errors={errors.email}
-            />
-
-            <Input
-              type={"password"}
-              placeholder={"Sua senha"}
-              {...register("password")}
-              errors={errors.password}
-            />
-
-            <Input
-              type={"password"}
-              placeholder={"Confirme senha"}
-              {...register("confirm")}
-              errors={errors.confirm}
-            />
-          </div>
-          <Button buttonsize="large" type="submit" className="form__button">
-            Cadastre-se
-          </Button>
-        </form>
-      </div>
-      <Footer/>
+      </main>
+      <Footer />
     </RegisterStyled>
   );
 };

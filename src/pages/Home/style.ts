@@ -3,6 +3,11 @@ import { styled } from "styled-components";
 export const HomeStyled = styled.div`
   margin: 0 auto;
 
+  header {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   .homeHeader__container {
     display: flex;
     justify-content: space-between;
@@ -56,6 +61,7 @@ export const HomeStyled = styled.div`
   .movie__img {
     width: 290px;
     height: 165px;
+    border-radius: 20px;
   }
 
   .genre-duration__div {
@@ -116,12 +122,12 @@ export const HomeStyled = styled.div`
     size: 21px;
   }
 
-  .star{
+  .star {
     width: 28px;
     height: 28px;
     color: var(--color-yellow);
   }
-  .fullstar{
+  .fullstar {
     width: 28px;
     height: 28px;
     color: var(--color-yellow);
