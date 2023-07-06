@@ -2,6 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IChildren, IMovie, IMovieContext, IReview } from "./@types";
 
+import { AxiosError } from "axios";
+
+
 export const MovieContext = createContext({} as IMovieContext);
 
 export const MovieProvider = ({ children }: IChildren) => {
@@ -15,29 +18,33 @@ export const MovieProvider = ({ children }: IChildren) => {
     } catch (error) {
       console.error(error);
     }
-  };
 
-  useEffect(() => {
-    getMovies();
-  }, []);
 
-  const getMovie = async (id: number) => {
-    try {
-      const { data } = await api.get<IMovie>(`/movies/${id}/?_embed=reviews`);
-      return data;
-    } catch (error) {
-      return error;
+    useEffect( () => {
+        getMovies();
+    }, [])
+
+    const getMovie = async (id: number) => {
+        try {
+            const { data } = await api.get<IMovie>(`/movies/${id}/?_embed=reviews`);
+            return data
+        } catch (error) {
+            const currentError = error as AxiosError<string>
+            return currentError.response?.data
+        }
+
     }
-  };
 
-  const getReview = async (idMovie: number, idUser: number) => {
-    try {
-      const { data } = await api.get<IReview>(
-        `/movies/${idMovie}/reviews?userId=${idUser}`
-      );
-      return data;
-    } catch (error) {
-      return error;
+    const getReview = async (idMovie: number, idUser: number) => {
+        try {
+            const { data } = await api.get<IReview>(`/movies/${idMovie}/reviews?userId=${idUser}`);
+            return data
+        } catch (error) {
+            const currentError = error as AxiosError<string>
+            return currentError.response?.data
+        }
+
+
     }
   };
 
