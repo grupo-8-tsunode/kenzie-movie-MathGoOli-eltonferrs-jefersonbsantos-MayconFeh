@@ -33,6 +33,8 @@ export interface IUserContext{
     registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
     isCreateModal: boolean;
     setIsCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
+    isEditModal: boolean;
+    setIsEditModal: React.Dispatch<React.SetStateAction<boolean>>
 
   }
 

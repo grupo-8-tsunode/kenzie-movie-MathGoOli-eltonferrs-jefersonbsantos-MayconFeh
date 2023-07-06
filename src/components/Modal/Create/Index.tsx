@@ -35,6 +35,7 @@ export const ModalCreate = () => {
 
   const submit  =  () =>{
 
+   
     
     setIsCreateModal(false)
   }
@@ -46,11 +47,11 @@ export const ModalCreate = () => {
           <H3Styled>
             Avaliação
           </H3Styled>
-          <ButtonExit    onClick={() => {setIsCreateModal(false);}}ref={refButton}>
+          <ButtonExit onClick={() => {setIsCreateModal(false);}}ref={refButton}>
             X
           </ButtonExit>
         </div>
-        <div className="reviewsModal">
+        <form className="reviewsModal">
           <select name="" id="" required>
             <option value="">Selecione uma nota</option>
             <option value="0">0</option>
@@ -69,8 +70,10 @@ export const ModalCreate = () => {
           <Button onClick={()=>{submit()}} buttonsize="small">
             <AiOutlineStar/> Avaliar
           </Button>
-        </div>
+        </form>
       </div>
     </OverlayModalStyled>
   );
 };
+
+

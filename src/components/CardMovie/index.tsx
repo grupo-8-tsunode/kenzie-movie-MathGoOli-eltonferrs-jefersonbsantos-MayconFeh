@@ -10,7 +10,7 @@ interface ImovieType {
 export const CardMovie = ({ movie }: ImovieType) => {
   return (
     <li className="card__movie">
-      <Link to={`/movie/${movie.id}`}>
+      <Link className="imgLink" to={`/movie/${movie.id}`}>
       <img className="movie__img" src={movie.image} alt="" />
       </Link>
       <div className="genre-duration__div">
