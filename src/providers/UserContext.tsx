@@ -12,6 +12,7 @@ export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isCreateModal , setIsCreateModal] = useState<boolean>(false)
+  const [isEditModal , setIsEditModal] = useState<boolean>(false)
   const navigate= useNavigate()
 
   const loadUser = async () => {
@@ -50,7 +51,7 @@ export const UserProvider = ({ children }: IChildren) => {
       localStorage.setItem("@KenzieMovie:Token", data.accessToken);
       localStorage.setItem("@KenzieMovie:UserID", data.user.id);
       toast.success("logado com Sucesso!")
-
+      navigate("/")
       loadUser();
     } catch (error) {
       console.error(error);
@@ -134,6 +135,8 @@ export const UserProvider = ({ children }: IChildren) => {
         registerNewuser,
         isCreateModal,
         setIsCreateModal,
+        isEditModal,
+        setIsEditModal
       }}
     >
       {children}

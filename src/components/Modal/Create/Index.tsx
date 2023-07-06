@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { OverlayModalStyled } from "./styles";
 import { UserContext } from "../../../providers/UserContext";
-import { Button } from "../../Buttons/styles";
+import { Button, ButtonExit } from "../../Buttons/styles";
 import { H3Styled } from "../../../styles/typography";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -33,30 +33,47 @@ export const ModalCreate = () => {
     };
   }, [setIsCreateModal]);
 
+  const submit  =  () =>{
+
+   
+    
+    setIsCreateModal(false)
+  }
+
   return (
     <OverlayModalStyled role="dialog">
       <div className="boxModal" ref={refModal}>
-        <div>
-          <Button buttonsize="large" onClick={() => {setIsCreateModal(false);}}ref={refButton}>
-            X
-          </Button>
+        <div className="titleModal">
           <H3Styled>
             Avaliação
           </H3Styled>
+          <ButtonExit onClick={() => {setIsCreateModal(false);}}ref={refButton}>
+            X
+          </ButtonExit>
         </div>
-        <select name="" id="">
-          <option value="">Selecione uma nota</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <textarea placeholder="Deixe seu comentário"></textarea>
-        <Button buttonsize="small">
-          <AiOutlineStar/> Avaliar
-        </Button>
+        <form className="reviewsModal">
+          <select name="" id="" required>
+            <option value="">Selecione uma nota</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <textarea required placeholder="Deixe seu comentário..."></textarea>
+          <Button onClick={()=>{submit()}} buttonsize="small">
+            <AiOutlineStar/> Avaliar
+          </Button>
+        </form>
       </div>
     </OverlayModalStyled>
   );
 };
+
+
