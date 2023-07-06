@@ -58,10 +58,12 @@ export interface IMovie {
   reviews: IReview[];
 }
 
+
 export interface IMovieContext{
     movies: IMovie[];
     getMovies: () => Promise<void>;
     getMovie: (id: number) => Promise<string | IMovie | null | undefined> ;
     getReview: (idMovie: number, idUser: number) => Promise<string | IReview | undefined> ;
+
 }
 
