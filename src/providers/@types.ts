@@ -30,7 +30,9 @@ export interface IUserContext{
     userEditReview: (review: IReview, movieId: string) => Promise<void>;
     userDeleteReview: (movieId: string) => Promise<void>;
     registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
-  
+    isCreateModal: boolean;
+    setIsCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
+
   }
 
 
