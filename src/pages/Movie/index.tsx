@@ -6,9 +6,13 @@ import { Header } from "../../components/Header/Index";
 import { MainImageSection } from "./MainImageSection";
 import { UserContext } from "../../providers/UserContext";
 import { ModalCreate } from "../../components/Modal/Create/Index";
+
 import { TextSection } from "./TextSection";
 import { UserReviewSection } from "./UserReviewSection";
 import { AllReviews } from "./AllReviews";
+
+import { EditModal } from "../../components/Modal/Edit/Index";
+
 
 export const Movie = () => {
 
@@ -16,7 +20,7 @@ export const Movie = () => {
     const [movie, setMovie] = useState< string | IMovie | undefined | null >(null);
     const { id } = useParams();
 
-    const { isCreateModal, setIsCreateModal } =  useContext(UserContext);
+    const { isCreateModal, setIsCreateModal,isEditModal,setIsEditModal } =  useContext(UserContext);
 
     useEffect(() => {
         const loadMovie = async () => {
@@ -45,7 +49,9 @@ export const Movie = () => {
     return (
         <>
             <Header/>
+
             <h1>Carregando...</h1>
+
         </>
     )
 }
