@@ -33,6 +33,11 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
     }
 
+    main {
+        width: 90%;
+        margin: 0 auto;
+    }
+
     button {
         cursor: pointer;
     }

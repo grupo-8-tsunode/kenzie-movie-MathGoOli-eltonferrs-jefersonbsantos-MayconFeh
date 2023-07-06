@@ -1,19 +1,18 @@
 import { styled } from "styled-components";
 
-
 export const LoginStyled = styled.main`
-
   background-image: url(/src/assets/login-background.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   height: 100%;
-  
- 
 
-  .backgroundForm{
-    
-    
+  header {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .backgroundForm {
     background: var(--color-lightgray-2);
   }
 
@@ -43,5 +42,4 @@ export const LoginStyled = styled.main`
     text-align: center;
     gap: 20px;
   }
-
 `;
