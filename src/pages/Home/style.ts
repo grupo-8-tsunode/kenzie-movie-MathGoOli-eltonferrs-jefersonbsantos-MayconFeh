@@ -132,4 +132,7 @@ export const HomeStyled = styled.div`
     height: 28px;
     color: var(--color-yellow);
   }
+  .imgLink{
+    width: max-content;
+  }
 `;

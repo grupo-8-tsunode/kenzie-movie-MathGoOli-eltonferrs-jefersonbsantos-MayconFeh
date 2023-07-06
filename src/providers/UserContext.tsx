@@ -12,6 +12,7 @@ export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isCreateModal , setIsCreateModal] = useState<boolean>(false)
+  const [isEditModal , setIsEditModal] = useState<boolean>(false)
   const navigate= useNavigate()
 
   const loadUser = async () => {
@@ -134,6 +135,8 @@ export const UserProvider = ({ children }: IChildren) => {
         registerNewuser,
         isCreateModal,
         setIsCreateModal,
+        isEditModal,
+        setIsEditModal
       }}
     >
       {children}
