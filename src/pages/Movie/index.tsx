@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { MovieContext } from "../../providers/MovieContext";
 import { IMovie } from "../../providers/@types";
+
 import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header/Index";
 import { MainImageSection } from "./MainImageSection";
@@ -16,11 +17,12 @@ import { EditModal } from "../../components/Modal/Edit/Index";
 
 export const Movie = () => {
 
+
     const { getMovie } = useContext(MovieContext);
     const [movie, setMovie] = useState< string | IMovie | undefined | null >(null);
     const { id } = useParams();
 
-    const { isCreateModal, setIsCreateModal,isEditModal,setIsEditModal } =  useContext(UserContext);
+    const { isCreateModal, setIsCreateModal, isEditModal,setIsEditModal } =  useContext(UserContext);
 
     useEffect(() => {
         const loadMovie = async () => {

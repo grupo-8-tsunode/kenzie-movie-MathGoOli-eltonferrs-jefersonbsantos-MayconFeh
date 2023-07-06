@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 interface IProps {
+
     image: string | null;
 }
 
@@ -38,3 +39,4 @@ export const StyledSection = styled.section<IProps>`
         flex-direction: column;
     }
   `
+

@@ -1,4 +1,4 @@
-import { IMovie } from "../../../providers/@types";
+{ IMovie } from "../../../providers/@types";
 import { StyledSection } from "./style";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -38,4 +38,5 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
     );
   }
   return <h1>Carregando...</h1>;
+
 };
