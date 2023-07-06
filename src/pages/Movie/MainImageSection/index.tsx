@@ -23,7 +23,7 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
             <span className="avaliation">
               {(
                 movie.reviews.reduce(
-                  (accumulator, current) => accumulator + current.score,
+                  (accumulator, current) => accumulator + +current.score,
                   0
                 ) / movie.reviews.length
               ).toFixed(1)}
