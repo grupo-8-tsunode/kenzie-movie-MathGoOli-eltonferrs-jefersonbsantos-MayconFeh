@@ -12,6 +12,7 @@ export const CardMovie = ({ movie }: ImovieType) => {
     <li className="card__movie">
       <Link to={`/movie/${movie.id}`}>
       <img className="movie__img" src={movie.image} alt="" />
+      </Link>
       <div className="genre-duration__div">
         <span className="movie__genre">{movie.type}</span>
         <span className="movie__duration">{movie.duration} m</span>
@@ -34,7 +35,6 @@ export const CardMovie = ({ movie }: ImovieType) => {
           )}
         </div>
       </div>
-      </Link>
     </li>
   );
 };
