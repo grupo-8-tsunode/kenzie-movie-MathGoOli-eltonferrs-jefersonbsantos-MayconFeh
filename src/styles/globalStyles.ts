@@ -31,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--color-white);
 
         margin: 0 auto;
+        font-family: 'Poppins', sans-serif;
     }
 
     main {
@@ -42,8 +43,14 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    button, input {
+    button, input, textarea,select,option {
         font-family: 'Poppins', sans-serif;
+        outline: none;
+        border: none;
+    }
+    input,textarea,select,option{
+        background: var(--color-lightgray-1);
+        color: var(--color-white);
     }
 
     p {
