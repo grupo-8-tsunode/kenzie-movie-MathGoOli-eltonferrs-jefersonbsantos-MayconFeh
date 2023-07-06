@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IChildren, IMovie, IMovieContext, IReview } from "./@types";
-import { useSearchParams } from "react-router-dom";
+import { AxiosError } from "axios";
+
 
 export const MovieContext = createContext({} as IMovieContext);
 
@@ -29,7 +30,8 @@ export const MovieProvider = ({ children }: IChildren) => {
             const { data } = await api.get<IMovie>(`/movies/${id}/?_embed=reviews`);
             return data
         } catch (error) {
-            return error
+            const currentError = error as AxiosError<string>
+            return currentError.response?.data
         }
 
     }
@@ -39,7 +41,8 @@ export const MovieProvider = ({ children }: IChildren) => {
             const { data } = await api.get<IReview>(`/movies/${idMovie}/reviews?userId=${idUser}`);
             return data
         } catch (error) {
-            return error
+            const currentError = error as AxiosError<string>
+            return currentError.response?.data
         }
 
     }

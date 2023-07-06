@@ -2,21 +2,20 @@
 import { useContext, useEffect, useState } from "react"
 import { MovieContext } from "../../providers/MovieContext"
 import { IMovie } from "../../providers/@types";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Header } from "../../components/Header/Index";
 import { MainImageSection } from "./MainImageSection";
 
 
 export const Movie = () => {
     const { getMovie } = useContext(MovieContext);
-    const [movie, setMovie] = useState< IMovie | object >({});
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [movie, setMovie] = useState< IMovie | void | null >(null);
+    const { id } = useParams();
 
 
-    console.log(movie)
     useEffect(() => {
         const loadMovie = async () => {
-            const movieId = Number(searchParams.get("movieId"));
+            const movieId = Number(id);
             const data = await getMovie(movieId);
             setMovie(data);
         }
@@ -27,11 +26,9 @@ export const Movie = () => {
     return (
         <>
             <Header/>
-            <section>
-                <MainImageSection movie={movie}></MainImageSection>
+            <MainImageSection movie={movie} />
 
-            </section>
-            <footer></footer>
+            
         </>
     )
 }

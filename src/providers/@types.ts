@@ -55,6 +55,6 @@ export interface IMovie{
 export interface IMovieContext{
     movies: IMovie[];
     getMovies: () => Promise<void>;
-    getMovie: (id: number) => Promise<IMovie> | Promise<unknown>;
-    getReview: (idMovie: number, idUser: number) => Promise<IReview> | Promise<unknown>;
+    getMovie: (id: number) => Promise<string | IMovie | undefined> ;
+    getReview: (idMovie: number, idUser: number) => Promise<string | IReview | undefined> ;
 }
