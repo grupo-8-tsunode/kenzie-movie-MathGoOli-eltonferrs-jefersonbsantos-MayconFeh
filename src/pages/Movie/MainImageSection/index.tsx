@@ -1,4 +1,4 @@
-{ IMovie } from "../../../providers/@types";
+import { IMovie } from "../../../providers/@types";
 import { StyledSection } from "./style";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -11,7 +11,6 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
     return (
       <StyledSection image={movie ? movie.image : null}>
         <div className="outdiv">
-
           <div className="innerdiv">
             <span>{movie?.type}</span>
             <h2>{movie?.name}</h2>
@@ -32,11 +31,9 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
               "-"
             )}
           </div>
-
         </div>
       </StyledSection>
     );
   }
   return <h1>Carregando...</h1>;
-
 };
