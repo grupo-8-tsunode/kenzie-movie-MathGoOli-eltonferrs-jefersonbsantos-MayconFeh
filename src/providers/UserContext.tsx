@@ -50,7 +50,7 @@ export const UserProvider = ({ children }: IChildren) => {
       localStorage.setItem("@KenzieMovie:Token", data.accessToken);
       localStorage.setItem("@KenzieMovie:UserID", data.user.id);
       toast.success("logado com Sucesso!")
-
+      navigate("/")
       loadUser();
     } catch (error) {
       console.error(error);
