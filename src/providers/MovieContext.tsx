@@ -1,17 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { IChildren, IMovie, IMovieContext, IReview } from "./@types";
-import { useNavigate } from "react-router";
-
 
 import { AxiosError } from "axios";
-
 
 export const MovieContext = createContext({} as IMovieContext);
 
 export const MovieProvider = ({ children }: IChildren) => {
   const [movies, setMovies] = useState<IMovie[]>([]);
-
 
   const getMovies = async () => {
     try {
@@ -29,8 +25,8 @@ export const MovieProvider = ({ children }: IChildren) => {
 
   const getMovie = async (id: number) => {
     try {
-      const { data } = await api.get<IMovie>(`/movies/${id}?_embed=reviews`);
-      setActualMovie(data);
+      const { data } = await api.get<IMovie>(`/movies/${id}/?_embed=reviews`);
+      return data;
     } catch (error) {
       const currentError = error as AxiosError<string>;
       return currentError.response?.data;
@@ -49,23 +45,8 @@ export const MovieProvider = ({ children }: IChildren) => {
     }
   };
 
-  const test = (movie: IMovie) => {
-    setActualMovie(movie);
-    navigate(`/movie/${movie.id}`);
-  };
-
   return (
-    <MovieContext.Provider
-      value={{
-        movies,
-        getMovies,
-        getMovie,
-        getReview,
-        actualMovie,
-        setActualMovie,
-        test,
-      }}
-    >
+    <MovieContext.Provider value={{ movies, getMovies, getMovie, getReview }}>
       {children}
     </MovieContext.Provider>
   );
