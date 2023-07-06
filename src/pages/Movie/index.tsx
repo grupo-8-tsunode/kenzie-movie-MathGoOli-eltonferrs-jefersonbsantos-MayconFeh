@@ -8,7 +8,7 @@ import { MainImageSection } from "./MainImageSection";
 export const Movie = () => {
 
     const { getMovie } = useContext(MovieContext);
-    const [movie, setMovie] = useState< IMovie | void | null >(null);
+    const [movie, setMovie] = useState< string | IMovie | undefined | null >(null);
     const { id } = useParams();
 
 
@@ -26,7 +26,6 @@ export const Movie = () => {
         <>
             <Header/>
             <MainImageSection movie={movie} />
-
             
         </>
     )
