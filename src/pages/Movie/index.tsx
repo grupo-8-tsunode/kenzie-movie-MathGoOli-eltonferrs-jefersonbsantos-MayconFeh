@@ -6,6 +6,9 @@ import { Header } from "../../components/Header/Index";
 import { MainImageSection } from "./MainImageSection";
 import { UserContext } from "../../providers/UserContext";
 import { ModalCreate } from "../../components/Modal/Create/Index";
+import { TextSection } from "./TextSection";
+import { UserReviewSection } from "./UserReviewSection";
+import { AllReviews } from "./AllReviews";
 
 export const Movie = () => {
 
@@ -25,12 +28,24 @@ export const Movie = () => {
         loadMovie()
     }, [])
 
+    if (typeof movie === "object" && movie !== null){
+        return (
+            <>
+                <Header/>
+                <MainImageSection movie={movie} />
+                <TextSection movie={movie}/>
+                <UserReviewSection movie={movie}/>
+                <AllReviews movie={movie}/>
+                <button onClick={() => {setIsCreateModal(true)}}>CreateModal</button>
+                {isCreateModal? <ModalCreate/> : null}
+            </>
+        )
+
+    }
     return (
         <>
             <Header/>
-            <MainImageSection movie={movie} />  
-            <button onClick={() => {setIsCreateModal(true)}}>CreateModal</button>
-            {isCreateModal? <ModalCreate/> : null}
+            <h1>Carregando...</h1>
         </>
     )
 }
