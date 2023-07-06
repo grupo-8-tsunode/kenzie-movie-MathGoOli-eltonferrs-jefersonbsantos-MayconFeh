@@ -22,7 +22,7 @@ export const Movie = () => {
     const [movie, setMovie] = useState< string | IMovie | undefined | null >(null);
     const { id } = useParams();
 
-    const { isCreateModal, setIsCreateModal,isEditModal,setIsEditModal } =  useContext(UserContext);
+    const { isCreateModal, setIsCreateModal, isEditModal,setIsEditModal } =  useContext(UserContext);
 
     useEffect(() => {
         const loadMovie = async () => {

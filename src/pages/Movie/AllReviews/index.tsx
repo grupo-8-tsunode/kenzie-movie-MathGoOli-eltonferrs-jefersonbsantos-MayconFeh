@@ -22,7 +22,7 @@ export const AllReviews = ({movie}: ISection) => {
     return (
         <section>
             <ul>
-                <p></p>
+                
                 {reviews?.map( review => {
                     return (
 
