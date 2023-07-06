@@ -1,14 +1,19 @@
+import { Navigate } from "react-router";
 import { IMovie } from "../../providers/@types";
 import { H3Styled } from "../../styles/typography";
 import { /*AiFillStar*/ AiOutlineStar } from "react-icons/ai";
+import { useContext } from "react";
+import { Movie } from "../../pages/Movie";
+import { MovieContext } from "../../providers/MovieContext";
 
 interface ImovieType {
   movie: IMovie;
 }
 
 export const CardMovie = ({ movie }: ImovieType) => {
+  const { test } = useContext(MovieContext);
   return (
-    <li className="card__movie">
+    <li className="card__movie" onClick={() => test(movie)}>
       <img className="movie__img" src={movie.image} alt="" />
       <div className="genre-duration__div">
         <span className="movie__genre">{movie.type}</span>

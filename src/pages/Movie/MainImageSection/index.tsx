@@ -1,13 +1,11 @@
-import {IMovie} from "../../../providers/@types"
-import { StyledSection } from "./style"
+import { useContext } from "react";
+import { IMovie } from "../../../providers/@types";
+import { StyledSection } from "./style";
+import { MovieContext } from "../../../providers/MovieContext";
 
+export const MainImageSection = () => {
+  const { actualMovie } = useContext(MovieContext);
+  const { image } = actualMovie;
 
-
-export const MainImageSection = ({movie}:IMovie) => {
-    
-    return (
-        <StyledSection image={movie.image}>
-            
-        </StyledSection>
-    )
-}
+  return <StyledSection image={image}></StyledSection>;
+};

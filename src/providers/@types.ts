@@ -52,6 +52,9 @@ export interface IMovie {
 }
 
 export interface IMovieContext {
+  test: (movie: IMovie) => void;
+  actualMovie: IMovie | null;
+  setActualMovie: React.Dispatch<React.SetStateAction<IMovie | null>>;
   movies: IMovie[];
   getMovies: () => Promise<void>;
   getMovie: (id: number) => Promise<IMovie> | Promise<unknown>;
