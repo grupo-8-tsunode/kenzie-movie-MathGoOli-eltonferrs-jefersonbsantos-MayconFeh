@@ -62,6 +62,7 @@ export const UserProvider = ({ children }: IChildren) => {
   const userLogoff = () => {
     localStorage.removeItem("@KenzieMovie:Token");
     localStorage.removeItem("@KenzieMovie:UserID");
+    setUser(null)
   };
 
   const userAddReview = async (review: IReview) => {
