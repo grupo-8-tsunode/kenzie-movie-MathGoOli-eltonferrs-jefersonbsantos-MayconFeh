@@ -3,6 +3,9 @@ import { api } from "../services/api";
 import { IChildren, IMovie, IMovieContext, IReview } from "./@types";
 
 
+import { AxiosError } from "axios";
+
+
 export const MovieContext = createContext({} as IMovieContext);
 
 export const MovieProvider = ({ children }: IChildren) => {
@@ -28,7 +31,8 @@ export const MovieProvider = ({ children }: IChildren) => {
       const { data } = await api.get<IMovie>(`/movies/${id}/?_embed=reviews`);
       return data;
     } catch (error) {
-      return error;
+      const currentError = error as AxiosError<string>;
+      return currentError.response?.data;
     }
   };
 
@@ -39,7 +43,8 @@ export const MovieProvider = ({ children }: IChildren) => {
       );
       return data;
     } catch (error) {
-      return error;
+      const currentError = error as AxiosError<string>;
+      return currentError.response?.data;
     }
   };
 
