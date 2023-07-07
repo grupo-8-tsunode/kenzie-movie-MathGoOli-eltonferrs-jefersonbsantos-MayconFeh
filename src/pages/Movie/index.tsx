@@ -13,49 +13,56 @@ import { UserReviewSection } from "./UserReviewSection";
 import { AllReviews } from "./AllReviews";
 
 import { EditModal } from "../../components/Modal/Edit/Index";
-
+import { MovieStyled } from "./style";
+import { H3Styled } from "../../styles/typography";
+import { Footer } from "../../components/Footer/Index";
 
 export const Movie = () => {
+  const { getMovie } = useContext(MovieContext);
+  const [movie, setMovie] = useState<string | IMovie | undefined | null>(null);
+  const { id } = useParams();
 
+  const { isCreateModal, setIsCreateModal, isEditModal, setIsEditModal } =
+    useContext(UserContext);
 
-    const { getMovie } = useContext(MovieContext);
-    const [movie, setMovie] = useState< string | IMovie | undefined | null >(null);
-    const { id } = useParams();
+  useEffect(() => {
+    const loadMovie = async () => {
+      const movieId = Number(id);
+      const data = await getMovie(movieId);
+      setMovie(data);
+    };
 
-    const { isCreateModal, setIsCreateModal, isEditModal,setIsEditModal } =  useContext(UserContext);
+    loadMovie();
+  }, []);
 
-    useEffect(() => {
-        const loadMovie = async () => {
-            const movieId = Number(id);
-            const data = await getMovie(movieId);
-            setMovie(data);
-        }
-
-        loadMovie()
-    }, [])
-
-    if (typeof movie === "object" && movie !== null){
-        return (
-            <>
-                <Header/>
-                <MainImageSection movie={movie} />
-                <TextSection movie={movie}/>
-                <UserReviewSection movie={movie}/>
-                <AllReviews movie={movie}/>
-                <button onClick={() => {setIsCreateModal(true)}}>CreateModal</button>
-                {isCreateModal? <ModalCreate/> : null}
-            </>
-        )
-
-    }
+  if (typeof movie === "object" && movie !== null) {
     return (
-        <>
-            <Header/>
+      <MovieStyled>
+        <Header />
+        <MainImageSection movie={movie} />
+        <main>
+          <TextSection movie={movie} />
+          <H3Styled>Avaliações</H3Styled>
+          <UserReviewSection movie={movie} />
+          <AllReviews movie={movie} />
+          <button
+            onClick={() => {
+              setIsCreateModal(true);
+            }}
+          >
+            CreateModal
+          </button>
+          {isCreateModal ? <ModalCreate /> : null}
+        </main>
+        <Footer />
+      </MovieStyled>
+    );
+  }
+  return (
+    <>
+      <Header />
 
-            <h1>Carregando...</h1>
-
-        </>
-    )
-}
-
-
+      <h1>Carregando...</h1>
+    </>
+  );
+};

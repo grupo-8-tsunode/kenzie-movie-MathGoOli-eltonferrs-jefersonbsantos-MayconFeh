@@ -39,7 +39,7 @@ export const HomeStyled = styled.div`
     font-family: "Poppins";
     color: var(--color-black);
     text-decoration: none;
-    padding-inline: 15px;
+    /* padding-inline: 15px; */
   }
 
   .homeMain__container {
@@ -132,7 +132,7 @@ export const HomeStyled = styled.div`
     height: 28px;
     color: var(--color-yellow);
   }
-  .imgLink{
+  .imgLink {
     width: max-content;
   }
 `;

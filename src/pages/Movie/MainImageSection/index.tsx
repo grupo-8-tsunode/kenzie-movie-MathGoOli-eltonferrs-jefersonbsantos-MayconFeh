@@ -1,4 +1,5 @@
 import { IMovie } from "../../../providers/@types";
+import { H3Styled } from "../../../styles/typography";
 import { StyledSection } from "./style";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -12,14 +13,14 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
       <StyledSection image={movie ? movie.image : null}>
         <div className="outdiv">
           <div className="innerdiv">
-            <span>{movie?.type}</span>
-            <h2>{movie?.name}</h2>
+            <span className="movie__genre">{movie?.type}</span>
+            <H3Styled>{movie?.name}</H3Styled>
           </div>
           <div className="innerdiv">
-            <span>{movie?.duration + "m"}</span>
+            <p>{movie?.duration + "m"}</p>
             {movie?.reviews.length !== 0 ? (
               <span className="avaliation">
-                <AiOutlineStar />
+                <AiOutlineStar className="star" />
                 {(
                   movie.reviews.reduce(
                     (accumulator, current) => accumulator + +current.score,

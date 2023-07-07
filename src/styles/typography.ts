@@ -17,5 +17,5 @@ export const PStyled = styled.p`
   font-family: Inter;
   font-size: clamp(1rem, 0.0732rem + 2.439vw, 1.125rem);
   font-weight: 400;
-  line-height: 2.25rem;
+  line-height: 2rem;
 `;
