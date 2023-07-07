@@ -9,7 +9,7 @@ interface ISection {
 }
 
 export const UserReviewSection = ({ movie }: ISection) => {
-  const { user ,isEditModal, setIsEditModal} = useContext(UserContext);
+  const { user ,isEditModal, setIsEditModal, userDeleteReview} = useContext(UserContext);
   const [UserReview, setUserReview] = useState<IReview[] | undefined>(
     undefined
   );
@@ -35,12 +35,12 @@ export const UserReviewSection = ({ movie }: ISection) => {
        <> <p>{UserReview[0].description}</p>
         {isEditModal ? <EditModal /> : null}
         <button value={UserReview[0].id} onClick={event=>(idReviews(event.currentTarget.value),setIsEditModal(true))}>E</button>
+        <button value={UserReview[0].id} onClick={event=>userDeleteReview(""+event.currentTarget.value)} >D</button>
       </>
       ) : (
         <h2>Deixe sua avaliação aqui</h2>
       )}
 
-      <button>D</button>
     </UserReviewStyled>
   );
 };

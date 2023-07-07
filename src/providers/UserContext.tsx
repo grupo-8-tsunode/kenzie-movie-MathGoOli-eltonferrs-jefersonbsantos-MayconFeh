@@ -107,7 +107,6 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const userDeleteReview = async (movieId: string) => {
     const token = localStorage.getItem("@KenzieMovie:Token");
-
     try {
       await api.delete(`/reviews/${movieId}`, {
         headers: {
