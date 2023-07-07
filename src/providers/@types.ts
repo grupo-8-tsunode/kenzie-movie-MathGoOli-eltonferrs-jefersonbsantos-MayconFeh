@@ -5,6 +5,10 @@ export interface IUser {
   name: string;
   id: number;
 }
+export interface IUserName {
+  name: string
+  id: number
+}
 
 export interface ILogin {
   accessToken: string;
@@ -34,7 +38,9 @@ export interface IUserContext{
     isCreateModal: boolean;
     setIsCreateModal: React.Dispatch<React.SetStateAction<boolean>>;
     isEditModal: boolean;
-    setIsEditModal: React.Dispatch<React.SetStateAction<boolean>>
+    setIsEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+    getAllUsers: React.Dispatch<React.SetStateAction<IUserName>>;
+    allUsers: IUserName[];
 
   }
 
