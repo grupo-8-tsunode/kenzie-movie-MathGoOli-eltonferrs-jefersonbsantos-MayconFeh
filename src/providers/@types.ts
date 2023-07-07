@@ -41,7 +41,7 @@ export interface IUserContext{
 
 export interface IReview {
   length?: any;
-  id?: number;
+  id?: number|undefined|string;
   movieId: number|string|undefined;
   userId: number|string|null;
   score: number|string;

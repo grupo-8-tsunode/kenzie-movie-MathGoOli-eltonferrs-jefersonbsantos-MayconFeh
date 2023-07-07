@@ -87,7 +87,7 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
-  const userEditReview = async (review: IReview, movieId: string) => {
+  const userEditReview = async (review: IReview, movieId: string|undefined) => {
     const token = localStorage.getItem("@KenzieMovie:Token");
 
     try {
