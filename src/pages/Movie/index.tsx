@@ -12,7 +12,6 @@ import { TextSection } from "./TextSection";
 import { UserReviewSection } from "./UserReviewSection";
 import { AllReviews } from "./AllReviews";
 
-import { EditModal } from "../../components/Modal/Edit/Index";
 import { MovieStyled } from "./style";
 import { H3Styled } from "../../styles/typography";
 import { Footer } from "../../components/Footer/Index";
@@ -22,7 +21,7 @@ export const Movie = () => {
   const [movie, setMovie] = useState<string | IMovie | undefined | null>(null);
   const { id } = useParams();
 
-  const { isCreateModal, setIsCreateModal, isEditModal, setIsEditModal } =
+  const { isCreateModal, setIsCreateModal } =
     useContext(UserContext);
 
   useEffect(() => {

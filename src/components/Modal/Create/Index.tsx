@@ -42,9 +42,8 @@ export const ModalCreate = () => {
 
   const submit: SubmitHandler<TypeAddreviewSchema>  =  (data) =>{
     setIsCreateModal(false)
-    const PostReview={...data,"movieId":id,"userId":userId}
+    const PostReview={...data,"movieId":Number(id),"userId":Number(userId)}
     userAddReview(PostReview)
-    console.log(PostReview)
     reset()
   }
 
