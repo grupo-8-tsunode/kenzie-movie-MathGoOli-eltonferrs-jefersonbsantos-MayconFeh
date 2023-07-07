@@ -44,7 +44,6 @@ export const ModalCreate = () => {
     setIsCreateModal(false)
     const PostReview={...data,"movieId":Number(id),"userId":Number(userId)}
     userAddReview(PostReview)
-    console.log(PostReview)
     reset()
   }
 
