@@ -7,6 +7,7 @@ export const AllReviewStyled = styled.section`
     width: 80%;
     margin: 0 auto;
     gap: 50px;
+    margin-top: 30px;
   }
 
   li {

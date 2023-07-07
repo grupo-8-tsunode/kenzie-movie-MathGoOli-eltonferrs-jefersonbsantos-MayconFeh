@@ -5,8 +5,4 @@ export const MovieStyled = styled.div`
     width: 90%;
     margin: 0 auto;
   }
-
-  h3 {
-    margin-top: 10px;
-  }
 `;
