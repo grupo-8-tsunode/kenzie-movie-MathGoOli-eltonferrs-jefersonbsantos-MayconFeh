@@ -1,44 +1,48 @@
 import { useContext, useEffect, useState } from "react";
 import { IMovie, IReview } from "../../../providers/@types";
 import { UserContext } from "../../../providers/UserContext";
-
+import { AllReviewStyled } from "./style";
+import { AiOutlineStar } from "react-icons/ai";
+import { PStyled } from "../../../styles/typography";
 
 interface ISection {
-    movie: IMovie;
+  movie: IMovie;
 }
 
+export const AllReviews = ({ movie }: ISection) => {
+  const { user } = useContext(UserContext);
+  const [reviews, setReviews] = useState<IReview[] | undefined>(undefined);
 
-export const AllReviews = ({movie}: ISection) => {
-    const { user } = useContext(UserContext);
-    const [reviews, setReviews] = useState<IReview[] | undefined>(undefined)
+  useEffect(() => {
+    if (
+      typeof user === "object" &&
+      user !== null &&
+      typeof movie === "object" &&
+      movie !== null
+    ) {
+      setReviews(movie.reviews.filter((review) => review.userId !== user.id));
+    } else {
+      setReviews(movie.reviews);
+    }
+  }, [movie, user]);
 
-    
-    useEffect(() => {
-        if((typeof user === "object" && user !== null) && (typeof movie === "object" && movie !== null)){
-            setReviews(movie.reviews.filter(review => review.userId !== user.id))
-        }
-    }, [movie, user])
-    
-    return (
-        <section>
-            <ul>
-                
-                {reviews?.map( review => {
-                    return (
-
-
-                        <li key={review.id}>
-                            <img src="" alt="" />
-                            <span>{review.score}</span>
-                            <p>{review.description}</p>
-                            <h2>{review.id}</h2>
-
-                        </li>
-                    )}
-                )}
-            
-                
-            </ul>
-        </section>
-    )
-}
+  return (
+    <AllReviewStyled>
+      <ul>
+        {reviews?.map((review) => {
+          return (
+            <li key={review.id}>
+              <span className="user">J</span>
+              <div className="avaliation__div">
+                <AiOutlineStar className="star" />
+                <span className="score">{review.score}</span>
+              </div>
+              <PStyled>{review.description}</PStyled>
+              <h4>Nome do usuário</h4>
+            </li>
+          );
+        })}
+      </ul>
+    </AllReviewStyled>
+  );
+};
