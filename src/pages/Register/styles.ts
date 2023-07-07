@@ -15,6 +15,19 @@ export const RegisterStyled = styled.div`
   header {
     width: 90%;
     margin: 0 auto;
+    @media (min-width: 768px) {
+      width: 70%;
+    }
+  }
+
+  main {
+    height: 75vh;
+    @media (min-width: 768px) {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
   .title-goBackButton__container {
@@ -24,10 +37,12 @@ export const RegisterStyled = styled.div`
     align-items: center;
     margin-bottom: 10px;
     @media (min-width: 768px) {
-      align-items: flex-start;
-      text-align: start;
       flex-direction: row;
       justify-content: space-between;
+      max-width: 690px;
+      margin: 0 auto;
+      text-align: start;
+      margin-bottom: 30px;
     }
   }
 
@@ -52,19 +67,43 @@ export const RegisterStyled = styled.div`
   }
   form {
     height: 250px;
+    max-width: 450px;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      max-width: 690px;
+    }
   }
+
+  input {
+    @media (min-width: 768px) {
+      height: 60px;
+      max-width: 312px;
+    }
+  }
+
   .form__container {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
+    max-width: 690px;
     @media (min-width: 768px) {
-      height: 150px;
+      flex-direction: row;
       flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
     }
   }
 
   .form__button {
-    width: 100%;
+    width: 98%;
+    @media (min-width: 768px) {
+      height: 60px;
+      max-width: 200px;
+      align-self: flex-end;
+    }
   }
 `;
