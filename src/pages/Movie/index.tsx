@@ -15,14 +15,14 @@ import { AllReviews } from "./AllReviews";
 import { MovieStyled } from "./style";
 import { H3Styled } from "../../styles/typography";
 import { Footer } from "../../components/Footer/Index";
+import { AiOutlineStar } from "react-icons/ai";
 
 export const Movie = () => {
   const { getMovie } = useContext(MovieContext);
   const [movie, setMovie] = useState<string | IMovie | undefined | null>(null);
   const { id } = useParams();
 
-  const { isCreateModal, setIsCreateModal } =
-    useContext(UserContext);
+  const { isCreateModal, setIsCreateModal } = useContext(UserContext);
 
   useEffect(() => {
     const loadMovie = async () => {
@@ -41,16 +41,20 @@ export const Movie = () => {
         <MainImageSection movie={movie} />
         <main>
           <TextSection movie={movie} />
-          <H3Styled>Avaliações</H3Styled>
-          <UserReviewSection movie={movie} />
+          <H3Styled className="avaliation__title">Avaliações</H3Styled>
+          <div className="noAvaliation__div">
+            <UserReviewSection movie={movie} />
+            <button
+              className="avaliation__button"
+              onClick={() => {
+                setIsCreateModal(true);
+              }}
+            >
+              <AiOutlineStar className="star" />
+              Avaliar
+            </button>
+          </div>
           <AllReviews movie={movie} />
-          <button
-            onClick={() => {
-              setIsCreateModal(true);
-            }}
-          >
-            CreateModal
-          </button>
           {isCreateModal ? <ModalCreate /> : null}
         </main>
         <Footer />
@@ -59,8 +63,6 @@ export const Movie = () => {
   }
   return (
     <>
-      <Header />
-
       <h1>Carregando...</h1>
     </>
   );

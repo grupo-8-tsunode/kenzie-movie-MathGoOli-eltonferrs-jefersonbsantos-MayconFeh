@@ -151,6 +151,7 @@ export const HomeStyled = styled.div`
           display: flex;
           max-height: 400px;
           border-radius: 40px;
+          margin-bottom: 20px;
         }
       }
     }

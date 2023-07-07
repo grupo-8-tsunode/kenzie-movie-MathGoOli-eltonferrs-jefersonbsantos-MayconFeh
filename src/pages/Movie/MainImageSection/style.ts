@@ -7,6 +7,10 @@ interface IProps {
 export const StyledSection = styled.section<IProps>`
   width: 100%;
   height: 400px;
+  margin-top: -100px;
+  @media (min-width: 768px) {
+    height: clamp(37.5rem, 29.1667rem + 17.3611vw, 50rem);
+  }
 
   box-sizing: border-box;
 
@@ -16,8 +20,9 @@ export const StyledSection = styled.section<IProps>`
   background-position: center;
 
   display: flex;
-
+  z-index: -1;
   .outdiv {
+    z-index: -2;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -30,6 +35,10 @@ export const StyledSection = styled.section<IProps>`
       rgba(255, 255, 255, 0) 70%,
       rgba(0, 0, 0, 0.2) 100%
     );
+    @media (min-width: 768px) {
+      padding: 0 15% 1rem 15%;
+      margin: 0 auto;
+    }
   }
   .innerdiv {
     display: flex;

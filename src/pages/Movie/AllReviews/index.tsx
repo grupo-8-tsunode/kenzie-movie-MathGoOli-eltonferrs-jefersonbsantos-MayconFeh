@@ -4,14 +4,13 @@ import { UserContext } from "../../../providers/UserContext";
 import { AllReviewStyled } from "./style";
 import { AiOutlineStar } from "react-icons/ai";
 import { PStyled } from "../../../styles/typography";
-import { api } from "../../../services/api";
 
 interface ISection {
   movie: IMovie;
 }
 
 export const AllReviews = ({ movie }: ISection) => {
-  const { user } = useContext(UserContext);
+  const { user, allUsers } = useContext(UserContext);
   const [reviews, setReviews] = useState<IReview[] | undefined>(undefined);
 
   useEffect(() => {
@@ -33,13 +32,19 @@ export const AllReviews = ({ movie }: ISection) => {
         {reviews?.map((review) => {
           return (
             <li key={review.id}>
-              <span className="user">J</span>
+              <span className="user">
+                {allUsers
+                  .find((user) => review.userId === user.id)
+                  ?.name[0].toUpperCase()}
+              </span>
               <div className="avaliation__div">
                 <AiOutlineStar className="star" />
                 <span className="score">{review.score}</span>
               </div>
               <PStyled>{review.description}</PStyled>
-              {review.userId === user?.id ? <h4>{user.name}</h4> : null}
+              <h4>
+                {allUsers.find((user) => review.userId === user.id)?.name}
+              </h4>
             </li>
           );
         })}
