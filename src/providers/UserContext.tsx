@@ -10,7 +10,7 @@ export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IChildren) => {
   const [user, setUser] = useState<IUser | null>(null);
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [isCreateModal , setIsCreateModal] = useState<boolean>(false)
   const [isEditModal , setIsEditModal] = useState<boolean>(false)
   const navigate= useNavigate()
@@ -21,6 +21,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
     if (token) {
       try {
+        setLoading(true)
         const { data } = await api.get<IUser>("/users/" + userId, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -33,6 +34,8 @@ export const UserProvider = ({ children }: IChildren) => {
         localStorage.removeItem("@KenzieMovie:Token");
         localStorage.removeItem("@KenzieMovie:UserID");
 
+      } finally {
+        setLoading(false)
       }
     }
   };
@@ -40,13 +43,14 @@ export const UserProvider = ({ children }: IChildren) => {
   useEffect(() => {
     const loadUserFunc = async () => {
       await loadUser();
-      setLoading(false);
+      setLoading(false)
     };
     loadUserFunc();
   }, []);
 
   const userLoginSubmit = async (formData: ISubmit) => {
     try {
+      setLoading(true)
       const { data } = await api.post("/login", formData);
       localStorage.setItem("@KenzieMovie:Token", data.accessToken);
       localStorage.setItem("@KenzieMovie:UserID", data.user.id);
@@ -56,12 +60,15 @@ export const UserProvider = ({ children }: IChildren) => {
     } catch (error) {
       console.error(error);
       toast.error("Email ou senha incorreta!")
+    } finally{
+      setLoading(false)
     }
   };
 
   const userLogoff = () => {
     localStorage.removeItem("@KenzieMovie:Token");
     localStorage.removeItem("@KenzieMovie:UserID");
+    setUser(null)
   };
 
   const userAddReview = async (review: IReview) => {
@@ -114,11 +121,14 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const registerNewuser= async (data:TypeResgisterFormValue)=>{
     try {
+      setLoading(true)
       await api.post("/users", data)
       toast.success("Usuario cadastrado")
       navigate("/login")
     } catch (error) {
       toast.error("Usuario não cadastrado")
+    } finally {
+      setLoading(false)
     }
   }
   return (

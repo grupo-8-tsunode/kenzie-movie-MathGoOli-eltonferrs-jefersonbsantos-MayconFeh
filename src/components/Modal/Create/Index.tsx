@@ -4,12 +4,19 @@ import { UserContext } from "../../../providers/UserContext";
 import { Button, ButtonExit } from "../../Buttons/styles";
 import { H3Styled } from "../../../styles/typography";
 import { AiOutlineStar } from "react-icons/ai";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AddreviewSchema, TypeAddreviewSchema } from "./createSchema";
+import { useParams } from "react-router";
 
 export const ModalCreate = () => {
+  const userId = localStorage.getItem("@KenzieMovie:UserID");
   const refModal = useRef<HTMLDivElement>(null);
   const refButton = useRef<HTMLButtonElement>(null);
+  const {register,handleSubmit,reset, formState: {errors}}=useForm<TypeAddreviewSchema>({resolver: zodResolver(AddreviewSchema)})
+  const { setIsCreateModal, userAddReview } = useContext(UserContext);
+  const { id } = useParams()
 
-  const { setIsCreateModal } = useContext(UserContext);
 
   useEffect(() => {
     const handleOutClick = (e: MouseEvent) => {
@@ -33,11 +40,12 @@ export const ModalCreate = () => {
     };
   }, [setIsCreateModal]);
 
-  const submit  =  () =>{
-
-   
-    
+  const submit: SubmitHandler<TypeAddreviewSchema>  =  (data) =>{
     setIsCreateModal(false)
+    const PostReview={...data,"movieId":id,"userId":userId}
+    userAddReview(PostReview)
+    console.log(PostReview)
+    reset()
   }
 
   return (
@@ -47,12 +55,12 @@ export const ModalCreate = () => {
           <H3Styled>
             Avaliação
           </H3Styled>
-          <ButtonExit onClick={() => {setIsCreateModal(false);}}ref={refButton}>
+          <ButtonExit onClick={() => {setIsCreateModal(false)}}ref={refButton}>
             X
           </ButtonExit>
         </div>
-        <form className="reviewsModal">
-          <select name="" id="" required>
+        <form className="reviewsModal" onSubmit={handleSubmit(submit)} >
+          <select {...register("score")}>
             <option value="">Selecione uma nota</option>
             <option value="0">0</option>
             <option value="1">1</option>
@@ -66,8 +74,10 @@ export const ModalCreate = () => {
             <option value="9">9</option>
             <option value="10">10</option>
           </select>
-          <textarea required placeholder="Deixe seu comentário..."></textarea>
-          <Button onClick={()=>{submit()}} buttonsize="small">
+          {errors? <p>{errors.score?.message}</p>:<></>}
+          <textarea {...register("description")} placeholder="Deixe seu comentário..."></textarea>
+          {errors? <p>{errors.description?.message}</p>:<></>}
+          <Button type="submit" buttonsize="small">
             <AiOutlineStar/> Avaliar
           </Button>
         </form>
