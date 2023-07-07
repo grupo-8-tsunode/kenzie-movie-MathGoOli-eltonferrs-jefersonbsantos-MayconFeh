@@ -33,21 +33,7 @@ export const MovieStyled = styled.div`
     justify-content: space-between;
     align-items: center;
   }
-
-  .avaliation__button {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    height: 40px;
-    padding-inline: 10px;
-    background-color: var(--color-yellow);
-    border-radius: 20px;
-    color: var(--color-lightgray-2);
-    font-family: "Poppins";
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
+  
   .star {
     width: 22px;
     height: 22px;

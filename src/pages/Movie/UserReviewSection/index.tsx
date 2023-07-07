@@ -6,13 +6,15 @@ import { EditModal } from "../../../components/Modal/Edit/Index";
 import { BsPencil } from "react-icons/bs";
 import { FiTrash2 } from "react-icons/fi";
 import { BiStar } from "react-icons/bi";
+import { AiOutlineStar } from "react-icons/ai";
+import { ModalCreate } from "../../../components/Modal/Create/Index";
 
 interface ISection {
   movie: IMovie;
 }
 
 export const UserReviewSection = ({ movie }: ISection) => {
-  const { user, isEditModal, setIsEditModal, userDeleteReview } =
+  const { user, isEditModal, setIsEditModal, userDeleteReview, setIsCreateModal, isCreateModal } =
     useContext(UserContext);
   const [UserReview, setUserReview] = useState<IReview[] | undefined>(
     undefined
@@ -34,12 +36,16 @@ export const UserReviewSection = ({ movie }: ISection) => {
 
   return (
     <UserReviewStyled>
-      <h4>Sua Avaliação</h4>
       {typeof UserReview !== "undefined" && UserReview?.length > 0 ? (
-        <>
+        <div className="EditReviewSection">
           {" "}
+          <h4>Sua Avaliação</h4>
+          <div className="EditReviewContent">
+
           <p>{UserReview[0].description}</p>
           {isEditModal ? <EditModal /> : null}
+          <div className="EditReview__buttons">
+
           <p>
             <BiStar class="starIcon" size={30} />
             {UserReview[0].score}
@@ -48,8 +54,8 @@ export const UserReviewSection = ({ movie }: ISection) => {
             value={UserReview[0].id}
             onClick={(event) => (
               idReviews(event.currentTarget.value), setIsEditModal(true)
-            )}
-          >
+              )}
+              >
             {" "}
             <BsPencil class="buttonIcon" size={30} />
           </button>
@@ -58,13 +64,27 @@ export const UserReviewSection = ({ movie }: ISection) => {
             onClick={(event) =>
               userDeleteReview("" + event.currentTarget.value)
             }
-          >
+            >
             {" "}
             <FiTrash2 class="buttonIcon" size={30} />
           </button>
-        </>
+            </div>
+            </div>
+        </div>
       ) : (
+        <div className="addReviewSection">
+        {isCreateModal ? <ModalCreate /> : null}
         <h2>Deixe sua avaliação aqui</h2>
+        <button
+        className="avaliation__button"
+        onClick={() => {
+          setIsCreateModal(true);
+        }}
+        >
+        <AiOutlineStar className="star" />
+        Avaliar
+      </button>
+        </div>
       )}
     </UserReviewStyled>
   );
