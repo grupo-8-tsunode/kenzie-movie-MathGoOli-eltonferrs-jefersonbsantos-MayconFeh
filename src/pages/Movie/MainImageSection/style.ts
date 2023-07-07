@@ -20,9 +20,10 @@ export const StyledSection = styled.section<IProps>`
   background-position: center;
 
   display: flex;
-  z-index: -1;
+  z-index: -2;
   .outdiv {
-    z-index: -2;
+    margin: 0 auto;
+    margin-top: 80px;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -33,11 +34,12 @@ export const StyledSection = styled.section<IProps>`
       0deg,
       rgba(0, 0, 0, 1) 0%,
       rgba(255, 255, 255, 0) 70%,
-      rgba(0, 0, 0, 0.2) 100%
+      rgba(0, 0, 0, 0) 100%
     );
     @media (min-width: 768px) {
       padding: 0 15% 1rem 15%;
       margin: 0 auto;
+      margin-top: 100px;
     }
   }
   .innerdiv {
