@@ -40,10 +40,10 @@ export const ModalCreate = () => {
     };
   }, [setIsCreateModal]);
 
-  const submit: SubmitHandler<TypeAddreviewSchema>  =  (data) =>{
+  const submit: SubmitHandler<TypeAddreviewSchema>  = async (data) =>{
     setIsCreateModal(false)
     const PostReview={...data,"movieId":Number(id),"userId":Number(userId)}
-    userAddReview(PostReview)
+    await userAddReview(PostReview)
     reset()
   }
 
