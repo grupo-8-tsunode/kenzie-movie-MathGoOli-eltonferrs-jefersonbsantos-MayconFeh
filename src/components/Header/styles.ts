@@ -12,6 +12,7 @@ export const HeaderStyled = styled.header`
 
   h3 {
     margin-top: 0;
+    cursor: pointer;
   }
   > div {
     display: flex;
