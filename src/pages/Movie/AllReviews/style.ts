@@ -8,6 +8,12 @@ export const AllReviewStyled = styled.section`
     margin: 0 auto;
     gap: 50px;
     margin-top: 30px;
+    @media (min-width: 768px) {
+      justify-content: space-around;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+    }
   }
 
   li {
@@ -15,6 +21,10 @@ export const AllReviewStyled = styled.section`
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    max-width: 300px;
+    @media (min-width: 768px) {
+      min-width: 300px;
+    }
   }
 
   .avaliation__div {
