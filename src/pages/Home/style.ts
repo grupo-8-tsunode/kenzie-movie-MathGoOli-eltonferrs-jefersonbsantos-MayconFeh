@@ -16,25 +16,6 @@ export const HomeStyled = styled.div`
     margin-top: 20px;
   }
 
-  .logo {
-    width: 80px;
-    height: 15px;
-  }
-
-  .signUp__button {
-    display: none;
-  }
-
-  .singIn__button {
-    width: 80px;
-    height: 30px;
-    background-color: var(--color-yellow);
-    border: 1px solid var(--color-yellow);
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 17px;
-  }
-
   a {
     font-family: "Poppins";
     color: var(--color-black);
@@ -53,15 +34,16 @@ export const HomeStyled = styled.div`
   }
 
   .card__movie {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    height: fit-content;
+    margin: 0 auto;
   }
 
   .movie__img {
-    width: 290px;
-    height: 165px;
-    border-radius: 20px;
+    width: 100%;
+    max-height: 260px;
+    border-radius: 30px;
   }
 
   .genre-duration__div {
@@ -69,6 +51,7 @@ export const HomeStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .movie__genre {
@@ -134,5 +117,42 @@ export const HomeStyled = styled.div`
   }
   .imgLink {
     width: max-content;
+  }
+
+  @media (min-width: 768px) {
+    .cards__container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 250px;
+      height: max-content;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      width: 70%;
+    }
+
+    main {
+      width: 70%;
+      height: 80vh;
+    }
+
+    .card__movie {
+      max-width: 100%;
+      height: auto;
+      &:first-child {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        height: 100%;
+        img {
+          display: flex;
+          max-height: 400px;
+          border-radius: 40px;
+        }
+      }
+    }
   }
 `;

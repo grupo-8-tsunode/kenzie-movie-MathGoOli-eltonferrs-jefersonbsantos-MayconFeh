@@ -4,6 +4,7 @@ import { UserContext } from "../../../providers/UserContext";
 import { AllReviewStyled } from "./style";
 import { AiOutlineStar } from "react-icons/ai";
 import { PStyled } from "../../../styles/typography";
+import { api } from "../../../services/api";
 
 interface ISection {
   movie: IMovie;
@@ -38,7 +39,7 @@ export const AllReviews = ({ movie }: ISection) => {
                 <span className="score">{review.score}</span>
               </div>
               <PStyled>{review.description}</PStyled>
-              <h4>Nome do usuário</h4>
+              {review.userId === user?.id ? <h4>{user.name}</h4> : null}
             </li>
           );
         })}

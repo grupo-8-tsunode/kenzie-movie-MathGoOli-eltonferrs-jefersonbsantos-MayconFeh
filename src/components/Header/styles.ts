@@ -8,6 +8,10 @@ export const HeaderStyled = styled.header`
   align-items: center;
   width: 100%;
   height: 80px;
+
+  h3 {
+    margin-top: 0;
+  }
   > div {
     display: flex;
     gap: 20px;
