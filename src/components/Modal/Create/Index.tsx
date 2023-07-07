@@ -7,12 +7,16 @@ import { AiOutlineStar } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AddreviewSchema, TypeAddreviewSchema } from "./createSchema";
+import { useParams } from "react-router";
 
 export const ModalCreate = () => {
+  const userId = localStorage.getItem("@KenzieMovie:UserID");
   const refModal = useRef<HTMLDivElement>(null);
   const refButton = useRef<HTMLButtonElement>(null);
   const {register,handleSubmit,reset, formState: {errors}}=useForm<TypeAddreviewSchema>({resolver: zodResolver(AddreviewSchema)})
-  const { setIsCreateModal } = useContext(UserContext);
+  const { setIsCreateModal, userAddReview } = useContext(UserContext);
+  const { id } = useParams()
+
 
   useEffect(() => {
     const handleOutClick = (e: MouseEvent) => {
@@ -38,7 +42,9 @@ export const ModalCreate = () => {
 
   const submit: SubmitHandler<TypeAddreviewSchema>  =  (data) =>{
     setIsCreateModal(false)
-    console.log(data)
+    const PostReview={...data,"movieId":id,"userId":userId}
+    userAddReview(PostReview)
+    console.log(PostReview)
     reset()
   }
 

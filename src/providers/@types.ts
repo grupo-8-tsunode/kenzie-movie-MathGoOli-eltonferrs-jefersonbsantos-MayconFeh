@@ -40,11 +40,11 @@ export interface IUserContext{
 
 
 export interface IReview {
-  length: any;
-  id: number;
-  movieId: number;
-  userId: number;
-  score: number;
+  length?: any;
+  id?: number;
+  movieId: number|string|undefined;
+  userId: number|string|null;
+  score: number|string;
   description: string;
 }
 
