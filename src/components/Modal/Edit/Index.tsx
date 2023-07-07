@@ -41,10 +41,10 @@ export const EditModal = () =>{
     };
   }, [setIsEditModal]);
 
-  const submit: SubmitHandler<TypeAddreviewSchema> = (data) => {
+  const submit: SubmitHandler<TypeAddreviewSchema> = async (data) => {
     setIsEditModal(false)
     const reviewId =localStorage.getItem("@KenzieMovie:ReviewID");
-    userEditReview({...data,"userId":Number(userId),"movieId":Number(id)},""+reviewId)
+    await userEditReview({...data,"userId":Number(userId),"movieId":Number(id)},""+reviewId)
     reset()
   }
 
