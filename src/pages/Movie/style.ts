@@ -25,7 +25,7 @@ export const MovieStyled = styled.div`
 
   .avaliation__title {
     margin-top: 30px;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .noAvaliation__div {
