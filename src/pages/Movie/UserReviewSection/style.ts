@@ -7,4 +7,10 @@ export const UserReviewStyled = styled.section`
     font-weight: 700;
     margin-top: 10px;
   }
+  .buttonIcon {
+    color: var(--color-yellow);
+  }
+  .starIcon{
+    color: var(--color-yellow);
+  }
 `;
