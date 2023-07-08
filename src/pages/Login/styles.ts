@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const LoginStyled = styled.div`
-  background-image: url(/src/assets/login-background.png);
+  background-image: url(./src/assets/login-background.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
