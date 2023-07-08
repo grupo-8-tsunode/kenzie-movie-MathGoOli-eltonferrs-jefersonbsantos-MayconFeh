@@ -22,7 +22,6 @@ export const MovieStyled = styled.div`
   }
 
   .avaliation__title {
-    margin-top: 30px;
     font-size: 2.5rem;
   }
 

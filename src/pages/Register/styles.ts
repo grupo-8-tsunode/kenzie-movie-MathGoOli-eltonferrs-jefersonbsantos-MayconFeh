@@ -80,7 +80,7 @@ export const RegisterStyled = styled.div`
   input {
     @media (min-width: 768px) {
       height: 60px;
-      max-width: 312px;
+      max-width: 412px;
     }
   }
 
@@ -93,7 +93,7 @@ export const RegisterStyled = styled.div`
     @media (min-width: 768px) {
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 40px;
+      
       margin-bottom: 30px;
     }
   }

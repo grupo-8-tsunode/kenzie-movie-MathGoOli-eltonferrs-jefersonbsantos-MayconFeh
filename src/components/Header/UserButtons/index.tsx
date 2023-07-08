@@ -10,7 +10,7 @@ export const UserButtons = () => {
     <StyledDiv>
         <div>
             <span className="profilePic">{user?.name[0]}</span>
-            <span>{user?.name}</span>
+            <span className="profileName">{user?.name}</span>
         </div>
       <button onClick={userLogoff}>Sair</button>
     </StyledDiv>

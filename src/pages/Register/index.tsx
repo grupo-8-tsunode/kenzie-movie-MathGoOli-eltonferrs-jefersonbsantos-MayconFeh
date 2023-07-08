@@ -50,6 +50,7 @@ export const Register = () => {
                 placeholder={"Seu nome"}
                 {...register("name")}
                 errors={errors.name}
+                isregister={true}
               />
 
               <Input
@@ -57,6 +58,7 @@ export const Register = () => {
                 placeholder={"Seu email"}
                 {...register("email")}
                 errors={errors.email}
+                isregister={true}
               />
 
               <Input
@@ -64,6 +66,7 @@ export const Register = () => {
                 placeholder={"Sua senha"}
                 {...register("password")}
                 errors={errors.password}
+                isregister={true}
               />
 
               <Input
@@ -71,6 +74,7 @@ export const Register = () => {
                 placeholder={"Confirme senha"}
                 {...register("confirm")}
                 errors={errors.confirm}
+                isregister={true}
               />
             </div>
             <Button buttonsize="large" type="submit" className="form__button">

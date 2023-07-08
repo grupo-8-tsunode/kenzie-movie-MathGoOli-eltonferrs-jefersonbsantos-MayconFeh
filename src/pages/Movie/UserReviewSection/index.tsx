@@ -9,6 +9,7 @@ import { BiStar } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 import { ModalCreate } from "../../../components/Modal/Create/Index";
 import { MovieContext } from "../../../providers/MovieContext";
+import { H3Styled } from "../../../styles/typography";
 
 interface ISection {
   movie: IMovie;
@@ -50,7 +51,6 @@ export const UserReviewSection = ({ movie }: ISection) => {
       user !== null){
       setUserReview(targetReviews.filter((review) => review.userId == user.id));
 
-      console.log(userReview)
     }
   },[targetReviews]);
 
@@ -61,9 +61,10 @@ export const UserReviewSection = ({ movie }: ISection) => {
       {typeof userReview !== "undefined" && userReview?.length > 0 ? (
         <div className="EditReviewSection">
           {" "}
+          <H3Styled className="avaliation__title">Avaliações</H3Styled>
           <h4>Sua Avaliação</h4>
           <div className="EditReviewContent">
-            <p className="userReview">{userReview[0].description}</p>
+            <p className="userReview">"{userReview[0].description}"</p>
             {isEditModal ? <EditModal /> : null}
             <div className="EditReview__buttons">
               <BiStar className="starIcon" size={30} />
@@ -93,19 +94,27 @@ export const UserReviewSection = ({ movie }: ISection) => {
           </div>
         </div>
       ) : (
-        <div className="addReviewSection">
-          {isCreateModal ? <ModalCreate /> : null}
-          <h2>Deixe sua avaliação aqui</h2>
+        <>
+        <div className="sideButtonReview">
+        <H3Styled className="avaliation__title">Avaliações</H3Styled>
+        {user?
           <button
             className="avaliation__button"
             onClick={() => {
               setIsCreateModal(true);
             }}
-          >
+            >
             <AiOutlineStar className="star" />
             Avaliar
           </button>
+          :
+          <></>
+          }
+          </div>
+        <div className="addReviewSection">
+          {isCreateModal ? <ModalCreate /> : null}
         </div>
+        </>
       )}
     </UserReviewStyled>
   );

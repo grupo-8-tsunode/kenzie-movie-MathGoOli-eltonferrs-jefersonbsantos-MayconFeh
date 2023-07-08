@@ -32,14 +32,13 @@ export const Login = () => {
         <div className="backgroundForm">
           <form onSubmit={handleSubmit(submit)}>
             <H1Styled>Login</H1Styled>
-            <Input type="email" placeholder="Email" {...register("email")} />
-            {errors.email ? <p>{errors.email.message}</p> : null}
+            
+            <Input type="email" placeholder="Email" {...register("email")} errors={errors.email} isregister={false}/>
             <Input
               type="password"
               placeholder="Senha"
-              {...register("password")}
-            />
-            {errors.password ? <p>{errors.password.message}</p> : null}
+              {...register("password")} errors={errors.password} isregister={false}
+              />
             <Button buttonsize="large" className="login__button" type="submit">
               Entrar
             </Button>

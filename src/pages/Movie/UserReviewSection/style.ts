@@ -28,6 +28,7 @@ export const UserReviewStyled = styled.section`
     font-weight: 700;
   }
   .EditReviewSection {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
   }
@@ -53,5 +54,17 @@ export const UserReviewStyled = styled.section`
     font-size: 1.1rem;
     font-family: "Poppins";
     margin-right: 15px;
+  }
+  .sideButtonReview{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .userReview{
+    font-size: 1.125rem;
+    font-weight: 400;
+  
   }
 `;

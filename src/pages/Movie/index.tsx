@@ -11,7 +11,6 @@ import { UserReviewSection } from "./UserReviewSection";
 import { AllReviews } from "./AllReviews";
 
 import { MovieStyled } from "./style";
-import { H3Styled } from "../../styles/typography";
 import { Footer } from "../../components/Footer/Index";
 
 
@@ -44,8 +43,8 @@ export const Movie = () => {
         <MainImageSection movie={movie} />
         <main>
           <TextSection movie={movie} />
-          <H3Styled className="avaliation__title">Avaliações</H3Styled>
-          <div className="noAvaliation__div">
+          
+          <div >
             <UserReviewSection movie={movie} />
 
           </div>

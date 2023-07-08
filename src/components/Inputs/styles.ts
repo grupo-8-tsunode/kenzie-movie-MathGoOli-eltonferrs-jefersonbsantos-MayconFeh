@@ -1,5 +1,8 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
+interface Idiv{
+  isregister:boolean;
+}
 export const InputStyled = styled.input`
   background-color: var(--color-lightgray-1);
   border: none;
@@ -16,4 +19,14 @@ export const InputStyled = styled.input`
     color: var(--color-white);
     opacity: 0.8;
   }
-`;
+  `
+export const InputDiv = styled.div<Idiv>`
+    display: flex;
+    flex-direction:column;
+    ${({isregister})=> {if(isregister){return css`@media (min-width: 768px){ width: 48%;}` }}}
+    
+      
+    
+      
+      
+`

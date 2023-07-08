@@ -26,14 +26,17 @@ export const StyledDiv = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-
+        font-weight: 700;
         background-color: var(--color-yellow);
     }
 
     button{
         font-size: .8rem;
+        font-weight: 800;
         color: var(--color-white);
     }
-
+    .profileName{
+        font-weight: 700;
+    }
 
 `

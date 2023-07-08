@@ -41,6 +41,7 @@ export const LoginStyled = styled.div`
   input {
     @media (min-width: 768px) {
       height: 60px;
+      width: 95%;
     }
   }
 
@@ -49,6 +50,7 @@ export const LoginStyled = styled.div`
     flex-direction: column;
     width: 90%;
     margin: 0 auto;
+    
     gap: 50px;
   }
 

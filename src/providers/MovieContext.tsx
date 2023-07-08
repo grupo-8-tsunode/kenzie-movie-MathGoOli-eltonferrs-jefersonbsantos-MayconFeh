@@ -18,7 +18,7 @@ export const MovieProvider = ({ children }: IChildren) => {
 
       setMovies(data);
     } catch (error) {
-      console.error(error);
+      
     }
   };
 

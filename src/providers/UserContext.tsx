@@ -38,7 +38,7 @@ export const UserProvider = ({ children }: IChildren) => {
 
         setUser(data);
       } catch (error) {
-        console.error(error);
+      
         localStorage.removeItem("@KenzieMovie:Token");
         localStorage.removeItem("@KenzieMovie:UserID");
       } finally {
@@ -62,12 +62,16 @@ export const UserProvider = ({ children }: IChildren) => {
       const { data } = await api.post("/login", formData);
       localStorage.setItem("@KenzieMovie:Token", data.accessToken);
       localStorage.setItem("@KenzieMovie:UserID", data.user.id);
-      toast.success("logado com Sucesso!");
+      toast.success("logado com Sucesso!",{
+        toastId: 1
+      });
       navigate("/");
       loadUser();
     } catch (error) {
-      console.error(error);
-      toast.error("Email ou senha incorreta!");
+    
+      toast.error("Email ou senha incorreta!",{
+        toastId: 2
+      });
     } finally {
       setLoading(false);
     }
@@ -92,10 +96,14 @@ export const UserProvider = ({ children }: IChildren) => {
         
        
         setTargetReviews( [...targetReviews, data] )
-        toast.success("Review adcionado");
+        toast.success("Review adicionado",{
+          toastId: 4
+        });
       } catch (error) {
-        console.error(error);
-        toast.error("Review não adcionado");
+
+        toast.error("Review não adicionado", {
+          toastId: 5
+        });
       }
     }
   };
@@ -119,10 +127,14 @@ export const UserProvider = ({ children }: IChildren) => {
         const filterReviews = targetReviews?.filter( element => element.id !== data.id)
         setTargetReviews([...filterReviews, data])
       }
-      toast.success("Review atualizada!");
+      toast.success("Review atualizada!", {
+        toastId: 6
+      });
     } catch (error) {
-      console.error(error);
-      toast.error("Review não atualizada");
+      
+      toast.error("Review não atualizada", {
+        toastId: 7
+      });
     }
   };
 
@@ -136,10 +148,13 @@ export const UserProvider = ({ children }: IChildren) => {
         },
       });
       setTargetReviews([])
-      toast.success("Review deletada");
+      toast.success("Review deletada", {
+        toastId: 8
+      });
     } catch (error) {
-      console.error(error);
-      toast.error("error ao deletar");
+      toast.error("error ao deletar", {
+        toastId: 9
+      });
     }
   };
 
@@ -147,10 +162,14 @@ export const UserProvider = ({ children }: IChildren) => {
     try {
       setLoading(true);
       await api.post("/users", data);
-      toast.success("Usuario cadastrado");
+      toast.success("Usuario cadastrado", {
+        toastId: 10
+      });
       navigate("/login");
     } catch (error) {
-      toast.error("Usuario não cadastrado");
+      toast.error("Usuario não cadastrado", {
+        toastId: 11
+      });
     } finally {
       setLoading(false);
     }
@@ -161,7 +180,7 @@ export const UserProvider = ({ children }: IChildren) => {
       const { data } = await api.get<IUserName[]>("/users");
       setAllUsers(data);
     } catch (error) {
-      toast.error("Falha ao requisitar nome de usuários");
+
     }
   };
   return (
