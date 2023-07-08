@@ -10,9 +10,10 @@ export const UserReviewStyled = styled.section`
   .buttonIcon {
     color: var(--color-yellow);
   }
-  .starIcon{
+  .starIcon {
     color: var(--color-yellow);
   }
+
   .avaliation__button {
     display: flex;
     align-items: center;
@@ -26,15 +27,31 @@ export const UserReviewStyled = styled.section`
     font-size: 1rem;
     font-weight: 700;
   }
-  .EditReviewSection{
+  .EditReviewSection {
     display: flex;
+    flex-direction: column;
   }
-  .EditReviewContent{
+  .EditReviewContent {
     display: flex;
     padding: 30px;
-    justify-content: space-between;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
-  .EditReview__buttons{
+  .EditReview__buttons {
     display: flex;
+    align-items: center;
+  }
+
+  .userReview__span {
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: "Poppins";
+    margin-right: 15px;
   }
 `;
