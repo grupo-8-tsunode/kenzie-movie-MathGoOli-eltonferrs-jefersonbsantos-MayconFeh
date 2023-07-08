@@ -36,5 +36,9 @@ export const MainImageSection = ({ movie }: IMainImageSection) => {
       </StyledSection>
     );
   }
-  return <h1>Carregando...</h1>;
+  return (
+    <div className="loadingContainer">
+          <div className="loading"/>
+        </div>
+  )
 };
