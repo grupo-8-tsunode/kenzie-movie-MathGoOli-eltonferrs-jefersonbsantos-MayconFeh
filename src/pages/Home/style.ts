@@ -17,7 +17,7 @@ export const HomeStyled = styled.div`
   }
 
   a {
-    font-family: "Poppins";
+    font-family: 'Poppins', sans-serif;
     color: var(--color-black);
     text-decoration: none;
   }
