@@ -52,7 +52,9 @@ export const Movie = () => {
   }
   return (
     <>
-      <h1>Carregando...</h1>
+       <div className="loadingContainer">
+          <div className="loading"/>
+        </div> 
     </>
   );
 };
