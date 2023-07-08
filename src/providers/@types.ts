@@ -31,7 +31,7 @@ export interface IUserContext{
     loadUser: () => Promise<void>;
     userLoginSubmit: (formData: ISubmit) => Promise<void>;
     userLogoff: () => void;
-    userAddReview: (review: IReview) => Promise<void>;
+    userAddReview: (review: IReview, setTargetReviews:React.Dispatch<React.SetStateAction<IReview[] | undefined>>, targetReviews:IReview[] | undefined ) => Promise<void>;
     userEditReview: (review: IReview, movieId: string) => Promise<void>;
     userDeleteReview: (movieId: string) => Promise<void>;
     registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
@@ -70,6 +70,10 @@ export interface IMovieContext{
     getMovies: () => Promise<void>;
     getMovie: (id: number) => Promise<string | IMovie | null | undefined> ;
     getReview: (idMovie: number, idUser: number) => Promise<string | IReview | undefined> ;
+    targetReviews: IReview[]| undefined;
+    setTargetReviews:  React.Dispatch<React.SetStateAction<IReview[] | undefined>>;
+    targetMovie: IMovie | undefined;
+    setTargetMovie: React.Dispatch<React.SetStateAction<IMovie | undefined>>;
 
 }
 

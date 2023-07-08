@@ -5,6 +5,7 @@ import { StyledDiv } from "./style";
 
 export const UserButtons = () => {
   const { user, userLogoff } = useContext(UserContext);
+  
   return (
     <StyledDiv>
         <div>
