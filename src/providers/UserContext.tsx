@@ -84,13 +84,14 @@ export const UserProvider = ({ children }: IChildren) => {
     review.score = Number(review.score);
     if(targetReviews){
       try {
-        await api.post("/reviews", review, {
+        const {data} = await api.post("/reviews", review, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-  
-        setTargetReviews( [...targetReviews,review] )
+        
+       
+        setTargetReviews( [...targetReviews, data] )
         toast.success("Review adcionado");
       } catch (error) {
         console.error(error);
@@ -101,16 +102,23 @@ export const UserProvider = ({ children }: IChildren) => {
 
   const userEditReview = async (
     review: IReview,
-    movieId: string | undefined
+    movieId: string | undefined,
+    setTargetReviews: React.Dispatch<React.SetStateAction<IReview[] | undefined>>,
+    targetReviews:IReview[]| undefined
+
   ) => {
     const token = localStorage.getItem("@KenzieMovie:Token");
 
     try {
-      await api.put(`/reviews/${movieId}`, review, {
+      const { data } = await api.put(`/reviews/${movieId}`, review, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      if(targetReviews){
+        const filterReviews = targetReviews?.filter( element => element.id !== data.id)
+        setTargetReviews([...filterReviews, data])
+      }
       toast.success("Review atualizada!");
     } catch (error) {
       console.error(error);
@@ -118,14 +126,16 @@ export const UserProvider = ({ children }: IChildren) => {
     }
   };
 
-  const userDeleteReview = async (movieId: string) => {
+  const userDeleteReview = async (movieId: string, setTargetReviews:React.Dispatch<React.SetStateAction<IReview[] | undefined>>) => {
     const token = localStorage.getItem("@KenzieMovie:Token");
     try {
+      
       await api.delete(`/reviews/${movieId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setTargetReviews([])
       toast.success("Review deletada");
     } catch (error) {
       console.error(error);

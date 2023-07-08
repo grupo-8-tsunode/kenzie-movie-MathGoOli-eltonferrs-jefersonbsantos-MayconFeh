@@ -32,8 +32,8 @@ export interface IUserContext{
     userLoginSubmit: (formData: ISubmit) => Promise<void>;
     userLogoff: () => void;
     userAddReview: (review: IReview, setTargetReviews:React.Dispatch<React.SetStateAction<IReview[] | undefined>>, targetReviews:IReview[] | undefined ) => Promise<void>;
-    userEditReview: (review: IReview, movieId: string) => Promise<void>;
-    userDeleteReview: (movieId: string) => Promise<void>;
+    userEditReview: (review: IReview, movieId: string,setTargetReviews: React.Dispatch<React.SetStateAction<IReview[] | undefined>>, targetReviews:IReview[]| undefined) => Promise<void>;
+    userDeleteReview: (movieId: string, setTargetReviews:React.Dispatch<React.SetStateAction<IReview[] | undefined>>) => Promise<void>;
     registerNewuser: (data: TypeResgisterFormValue) => Promise<void>;
     isCreateModal: boolean;
     setIsCreateModal: React.Dispatch<React.SetStateAction<boolean>>;

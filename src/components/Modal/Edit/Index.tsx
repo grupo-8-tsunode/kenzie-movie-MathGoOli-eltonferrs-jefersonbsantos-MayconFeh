@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../../providers/UserContext";
 import { H3Styled } from "../../../styles/typography";
 import { AiOutlineStar } from "react-icons/ai";
@@ -8,16 +8,35 @@ import { useParams } from "react-router-dom";
 import { SubmitHandler,useForm } from "react-hook-form";
 import { AddreviewSchema, TypeAddreviewSchema } from "../Create/createSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { MovieContext } from "../../../providers/MovieContext";
+import { IReview } from "../../../providers/@types";
+
 
 export const EditModal = () =>{
   const refModal = useRef<HTMLDivElement>(null);
   const refButton = useRef<HTMLButtonElement>(null);
   const { setIsEditModal } = useContext(UserContext);
-  const { register, handleSubmit, reset, formState: {errors}} = useForm<TypeAddreviewSchema>({resolver: zodResolver(AddreviewSchema)})
-  const{ userEditReview }= useContext(UserContext)
+  const { register, handleSubmit, reset, setValue, formState: {errors}} = useForm<TypeAddreviewSchema>({resolver: zodResolver(AddreviewSchema)})
+  const{ userEditReview, user }= useContext(UserContext)
   const { id }= useParams()
   const userId = localStorage.getItem("@KenzieMovie:UserID")
+  const {targetReviews, setTargetReviews} = useContext(MovieContext)
+
+  const [userReview, setUserReview] = useState<IReview | undefined>(
+    undefined
+  );
   
+  useEffect(() => {
+    if(targetReviews &&
+      user !== null){
+      setUserReview(targetReviews.filter((review) => review.userId == user.id)[0]);
+    }
+  }, [targetReviews])
+
+  useEffect(() => {
+    setValue("score", `${userReview?.score}`);
+    setValue("description", `${userReview?.description}`);
+  }, [userReview] )
 
   useEffect(() => {
     const handleOutClick = (e: MouseEvent) => {
@@ -44,7 +63,7 @@ export const EditModal = () =>{
   const submit: SubmitHandler<TypeAddreviewSchema> = async (data) => {
     setIsEditModal(false)
     const reviewId =localStorage.getItem("@KenzieMovie:ReviewID");
-    await userEditReview({...data,"userId":Number(userId),"movieId":Number(id)},""+reviewId)
+    await userEditReview({...data,"userId":Number(userId),"movieId":Number(id)},""+reviewId, setTargetReviews, targetReviews)
     reset()
   }
 
@@ -60,7 +79,7 @@ export const EditModal = () =>{
           </ButtonExit>
         </div>
         <form className="editModal" onSubmit={handleSubmit(submit)}>
-          <select {...register("score")}>
+          <select {...register("score")} >
             <option value="" hidden >Selecione uma nota</option>
             <option value="0">0</option>
             <option value="1">1</option>
