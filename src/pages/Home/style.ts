@@ -20,11 +20,11 @@ export const HomeStyled = styled.div`
     font-family: "Poppins";
     color: var(--color-black);
     text-decoration: none;
-    /* padding-inline: 15px; */
   }
 
   .homeMain__container {
     margin-top: 20px;
+    min-height: 90vh;
   }
 
   .cards__container {
