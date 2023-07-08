@@ -56,14 +56,14 @@ export const StyledSection = styled.section<IProps>`
     color: var(--color-black);
     border-radius: 20px;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 1.0625rem;
     font-family: "Poppins", sans-serif;
   }
 
   .avaliation {
     font-family: "Poppins";
     font-weight: 700;
-    size: 21px;
+    size: 1.3125rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

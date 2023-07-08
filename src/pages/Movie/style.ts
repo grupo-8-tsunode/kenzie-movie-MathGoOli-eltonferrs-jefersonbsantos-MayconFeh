@@ -25,11 +25,6 @@ export const MovieStyled = styled.div`
     font-size: 2.5rem;
   }
 
-  /* .noAvaliation__div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  } */
 
   .star {
     width: 22px;

@@ -11,7 +11,7 @@ export const FooterStyled = styled.footer`
 
     >h3{
         font-family: Poppins;
-        font-size: 21px;
+        font-size: 1.3125rem;
         font-weight: 700;
         line-height: 32px;
         letter-spacing: 0em;

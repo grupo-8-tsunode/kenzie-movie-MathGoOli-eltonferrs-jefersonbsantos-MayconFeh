@@ -7,6 +7,7 @@ export const HeaderStyled = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 2000px;
   height: 80px;
   z-index: 1;
 
@@ -21,7 +22,7 @@ export const HeaderStyled = styled.header`
     a {
       text-decoration: none;
       font-family: Poppins;
-      font-size: 17px;
+      font-size: 1.0625rem;
       font-weight: 700;
       line-height: 26px;
       width: max-content;

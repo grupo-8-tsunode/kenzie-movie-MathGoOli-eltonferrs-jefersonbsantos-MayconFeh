@@ -60,7 +60,7 @@ export const RegisterStyled = styled.div`
   .goBack__button {
     display: flex;
     align-items: center;
-    font-size: 17px;
+    font-size: 1.0625rem;
     font-family: Poppins;
     font-weight: 700;
     color: var(--color-yellow);

@@ -53,4 +53,7 @@ button{
 a{
   text-decoration: none;
 }
+span{
+	font-family: 'Poppins';
+}
 `;
