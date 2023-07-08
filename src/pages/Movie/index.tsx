@@ -16,7 +16,7 @@ import { Footer } from "../../components/Footer/Index";
 
 
 export const Movie = () => {
-  const { getMovie } = useContext(MovieContext);
+  const { getMovie, targetMovie } = useContext(MovieContext);
   const [movie, setMovie] = useState<string | IMovie | undefined | null>(null);
   const { id } = useParams();
   //const {targetReview, setTargetReview}= useContext(MovieContext)
@@ -24,9 +24,14 @@ export const Movie = () => {
 
   useEffect(() => {
     const loadMovie = async () => {
-      const movieId = Number(id);
-      const data = await getMovie(movieId);
-      setMovie(data);
+      if(targetMovie){
+        setMovie(targetMovie);
+      } else{
+        const movieId = Number(id);
+        const data = await getMovie(movieId);
+        setMovie(data);
+      }
+
     };
 
     loadMovie();

@@ -49,9 +49,7 @@ export const UserReviewSection = ({ movie }: ISection) => {
     if(targetReviews &&
       user !== null){
       setUserReview(targetReviews.filter((review) => review.userId == user.id));
-      if(userReview?.length === 0){
-        setUserReview(undefined)
-      }
+
       console.log(userReview)
     }
   },[targetReviews]);
@@ -68,7 +66,7 @@ export const UserReviewSection = ({ movie }: ISection) => {
             <p className="userReview">{userReview[0].description}</p>
             {isEditModal ? <EditModal /> : null}
             <div className="EditReview__buttons">
-              <BiStar class="starIcon" size={30} />
+              <BiStar className="starIcon" size={30} />
               <span className="userReview__span">
                 {Number(userReview[0].score).toFixed(1)}
               </span>
@@ -80,16 +78,16 @@ export const UserReviewSection = ({ movie }: ISection) => {
                 )}
               >
                 {" "}
-                <BsPencil class="buttonIcon" size={30} />
+                <BsPencil className="buttonIcon" size={30} />
               </button>
               <button
                 value={userReview[0].id}
                 onClick={(event) =>
-                  userDeleteReview("" + event.currentTarget.value)
+                  userDeleteReview("" + event.currentTarget.value, setTargetReviews)
                 }
               >
                 {" "}
-                <FiTrash2 class="buttonIcon" size={30} />
+                <FiTrash2 className="buttonIcon" size={30} />
               </button>
             </div>
           </div>
