@@ -14,8 +14,14 @@ interface ISection {
 }
 
 export const UserReviewSection = ({ movie }: ISection) => {
-  const { user, isEditModal, setIsEditModal, userDeleteReview, setIsCreateModal, isCreateModal } =
-    useContext(UserContext);
+  const {
+    user,
+    isEditModal,
+    setIsEditModal,
+    userDeleteReview,
+    setIsCreateModal,
+    isCreateModal,
+  } = useContext(UserContext);
   const [UserReview, setUserReview] = useState<IReview[] | undefined>(
     undefined
   );
@@ -41,49 +47,48 @@ export const UserReviewSection = ({ movie }: ISection) => {
           {" "}
           <h4>Sua Avaliação</h4>
           <div className="EditReviewContent">
+            <p className="userReview">{UserReview[0].description}</p>
+            {isEditModal ? <EditModal /> : null}
+            <div className="EditReview__buttons">
+              <BiStar class="starIcon" size={30} />
+              <span className="userReview__span">
+                {Number(UserReview[0].score).toFixed(1)}
+              </span>
 
-          <p>{UserReview[0].description}</p>
-          {isEditModal ? <EditModal /> : null}
-          <div className="EditReview__buttons">
-
-          <p>
-            <BiStar class="starIcon" size={30} />
-            {UserReview[0].score}
-          </p>
-          <button
-            value={UserReview[0].id}
-            onClick={(event) => (
-              idReviews(event.currentTarget.value), setIsEditModal(true)
-              )}
+              <button
+                value={UserReview[0].id}
+                onClick={(event) => (
+                  idReviews(event.currentTarget.value), setIsEditModal(true)
+                )}
               >
-            {" "}
-            <BsPencil class="buttonIcon" size={30} />
-          </button>
-          <button
-            value={UserReview[0].id}
-            onClick={(event) =>
-              userDeleteReview("" + event.currentTarget.value)
-            }
-            >
-            {" "}
-            <FiTrash2 class="buttonIcon" size={30} />
-          </button>
+                {" "}
+                <BsPencil class="buttonIcon" size={30} />
+              </button>
+              <button
+                value={UserReview[0].id}
+                onClick={(event) =>
+                  userDeleteReview("" + event.currentTarget.value)
+                }
+              >
+                {" "}
+                <FiTrash2 class="buttonIcon" size={30} />
+              </button>
             </div>
-            </div>
+          </div>
         </div>
       ) : (
         <div className="addReviewSection">
-        {isCreateModal ? <ModalCreate /> : null}
-        <h2>Deixe sua avaliação aqui</h2>
-        <button
-        className="avaliation__button"
-        onClick={() => {
-          setIsCreateModal(true);
-        }}
-        >
-        <AiOutlineStar className="star" />
-        Avaliar
-      </button>
+          {isCreateModal ? <ModalCreate /> : null}
+          <h2>Deixe sua avaliação aqui</h2>
+          <button
+            className="avaliation__button"
+            onClick={() => {
+              setIsCreateModal(true);
+            }}
+          >
+            <AiOutlineStar className="star" />
+            Avaliar
+          </button>
         </div>
       )}
     </UserReviewStyled>
