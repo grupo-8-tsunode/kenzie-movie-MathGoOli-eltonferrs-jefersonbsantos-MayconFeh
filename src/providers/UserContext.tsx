@@ -79,20 +79,23 @@ export const UserProvider = ({ children }: IChildren) => {
     setUser(null);
   };
 
-  const userAddReview = async (review: IReview) => {
+  const userAddReview = async (review: IReview, setTargetReviews:React.Dispatch<React.SetStateAction<IReview[] | undefined>>, targetReviews:IReview[]| undefined ) => {
     const token = localStorage.getItem("@KenzieMovie:Token");
     review.score = Number(review.score);
-    console.log(review);
-    try {
-      await api.post("/reviews", review, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      toast.success("Review adcionado");
-    } catch (error) {
-      console.error(error);
-      toast.error("Review não adcionado");
+    if(targetReviews){
+      try {
+        await api.post("/reviews", review, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        setTargetReviews( [...targetReviews,review] )
+        toast.success("Review adcionado");
+      } catch (error) {
+        console.error(error);
+        toast.error("Review não adcionado");
+      }
     }
   };
 

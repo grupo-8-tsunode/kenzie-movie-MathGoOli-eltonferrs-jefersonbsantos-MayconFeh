@@ -19,6 +19,7 @@ export const Movie = () => {
   const { getMovie } = useContext(MovieContext);
   const [movie, setMovie] = useState<string | IMovie | undefined | null>(null);
   const { id } = useParams();
+  //const {targetReview, setTargetReview}= useContext(MovieContext)
 
 
   useEffect(() => {

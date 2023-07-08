@@ -8,6 +8,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { BiStar } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 import { ModalCreate } from "../../../components/Modal/Create/Index";
+import { MovieContext } from "../../../providers/MovieContext";
 
 interface ISection {
   movie: IMovie;
@@ -25,6 +26,8 @@ export const UserReviewSection = ({ movie }: ISection) => {
   const [UserReview, setUserReview] = useState<IReview[] | undefined>(
     undefined
   );
+
+  const { targetReviews ,setTargetReviews }= useContext(MovieContext)
 
   const idReviews = (value: string) => {
     localStorage.setItem("@KenzieMovie:ReviewID", value);

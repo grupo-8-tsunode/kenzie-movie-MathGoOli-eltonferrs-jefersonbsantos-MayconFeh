@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AddreviewSchema, TypeAddreviewSchema } from "./createSchema";
 import { useParams } from "react-router";
+import { MovieContext } from "../../../providers/MovieContext";
 
 export const ModalCreate = () => {
   const userId = localStorage.getItem("@KenzieMovie:UserID");
@@ -16,7 +17,7 @@ export const ModalCreate = () => {
   const {register,handleSubmit,reset, formState: {errors}}=useForm<TypeAddreviewSchema>({resolver: zodResolver(AddreviewSchema)})
   const { setIsCreateModal, userAddReview } = useContext(UserContext);
   const { id } = useParams()
-
+  const {setTargetReviews, targetReviews }=useContext(MovieContext)
 
   useEffect(() => {
     const handleOutClick = (e: MouseEvent) => {
@@ -43,7 +44,7 @@ export const ModalCreate = () => {
   const submit: SubmitHandler<TypeAddreviewSchema>  = async (data) =>{
     setIsCreateModal(false)
     const PostReview={...data,"movieId":Number(id),"userId":Number(userId)}
-    await userAddReview(PostReview)
+    await userAddReview(PostReview, setTargetReviews, targetReviews)
     reset()
   }
 

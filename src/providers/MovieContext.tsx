@@ -9,6 +9,9 @@ export const MovieContext = createContext({} as IMovieContext);
 export const MovieProvider = ({ children }: IChildren) => {
   const [movies, setMovies] = useState<IMovie[]>([]);
 
+  const [targetMovie, setTargetMovie ]= useState<IMovie | undefined>(undefined)
+  const [targetReviews, setTargetReviews] = useState<IReview[] | undefined>(undefined)
+
   const getMovies = async () => {
     try {
       const { data } = await api.get<IMovie[]>("/movies?_embed=reviews");
@@ -46,7 +49,7 @@ export const MovieProvider = ({ children }: IChildren) => {
   };
 
   return (
-    <MovieContext.Provider value={{ movies, getMovies, getMovie, getReview }}>
+    <MovieContext.Provider value={{ movies, getMovies, getMovie, getReview, targetReviews , setTargetReviews , targetMovie, setTargetMovie}}>
       {children}
     </MovieContext.Provider>
   );
